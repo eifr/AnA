@@ -1,0 +1,17 @@
+$url: "./assets/img/landing-bg.jpg";
+
+.bg-image {
+  background-image: url($url);
+
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+
+  transform: scale(1.01);
+
+  height: 90vh;
+  width: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

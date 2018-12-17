@@ -11,6 +11,9 @@ import { LandingComponent } from './landing/landing.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutComponent } from './about/about.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     FooterComponent,
     NavbarComponent,
     HomepageComponent,
+    NotFoundComponent,
+    AboutComponent,
+    ProjectsComponent,
 
   ],
   imports: [

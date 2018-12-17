@@ -1,5 +1,9 @@
 $url: "./assets/img/landing-bg.jpg";
 
+.container {
+  overflow: hidden;
+  height: 90vh;
+}
 
 .bg-image {
   background-image: url($url);
@@ -9,37 +13,17 @@ $url: "./assets/img/landing-bg.jpg";
 
   transform: scale(1.01);
 
-  height: 90vh;
+  height: inherit;
   width: 100%;
 
+  position: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.top-row {
-  color: white;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  z-index: 2;
+.navbar {
+  position: relative;
+  top:3vh;
   width: 100%;
-}
-
-.heading {
-  position: absolute;
-  left: 12vh;
-  top: 8vh;
-
-  h1 {
-      font-size: 3em;
-      margin: 0;
-      padding-left: .1em;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: 2em;
-
-  }
 }

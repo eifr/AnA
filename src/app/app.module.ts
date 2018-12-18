@@ -5,6 +5,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -29,6 +32,8 @@ import { ProjectsComponent } from './projects/projects.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatMenuModule,

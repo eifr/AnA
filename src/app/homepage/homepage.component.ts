@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Apt } from '../apt';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-homepage',

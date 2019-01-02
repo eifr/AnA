@@ -3,4 +3,22 @@ footer {
   width: 100%;
   box-shadow: inset 0px 7px 16px -6px;
   height: 10vh;
+
+  display: grid;
+  grid-template-columns: 15% auto 30%;  
+  grid-template-rows: 1fr 1fr;
+
+}
+.item-a, .item-c {
+  background: red;
+
+}
+.item-b {
+  color: white;
+}
+
+.item {
+  border: solid 3px black;
+  grid-row: 1 / 3;
+
 }

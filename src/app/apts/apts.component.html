@@ -1,0 +1,9 @@
+<ul class="apts">
+  <li *ngFor="let apt of apts">
+    <a routerLink="/detail/{{apt.id}}">
+      <span class="badge">{{apt.id}}</span> {{apt.location}}
+    </a>
+    <button class="delete" title="delete apt"
+      (click)="delete(apt)">x</button>
+  </li>
+</ul>

@@ -17,6 +17,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { AptsComponent } from './apts/apts.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProjectsComponent } from './projects/projects.component';
     NotFoundComponent,
     AboutComponent,
     ProjectsComponent,
+    AptsComponent,
 
   ],
   imports: [

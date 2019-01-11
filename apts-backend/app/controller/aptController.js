@@ -68,11 +68,10 @@ class AptController {
         apt.arnona = req.body.arnona;
         apt.vaad = req.body.vaad;
         apt.price = req.body.price;
-        apt.imgUrl = req.body.imgUrl;
 
         return this.AptDao.update(apt)
             .then(this.common.editSuccess(res))
-            .catch(this.common.serverError(res));
+            .catch  (this.common.serverError(res));
     };
 
     /**
@@ -94,7 +93,6 @@ class AptController {
         apt.arnona = req.body.arnona;
         apt.vaad = req.body.vaad;
         apt.price = req.body.price;
-        apt.imgUrl = req.body.imgUrl;
 
         if (req.body.id) {
             return this.AptDao.createWithId(apt)

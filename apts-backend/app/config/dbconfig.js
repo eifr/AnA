@@ -15,13 +15,12 @@ let init = function () {
         " address TEXT," +
         " floor INT," +
         " rooms REAL," +
-        " sqrMtr REAL" +
-        " parking INT" +
-        " storage INT" +
-        " arnona INT" +
-        " vaad INT" +
+        " sqrMtr REAL," +
+        " parking INT," +
+        " storage INT," +
+        " arnona INT," +
+        " vaad INT," +
         " price INT" +
-        " imgUrl TEXY" +
         ")");
 
 };

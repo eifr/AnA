@@ -22,7 +22,7 @@ class AptDao {
         let sqlRequest = "SELECT * FROM apt WHERE id=$id";
         let sqlParams = {$id: id};
         return this.common.findOne(sqlRequest, sqlParams).then(row =>
-            new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, row.imgUrl));
+            new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price));
     };
 
     /**
@@ -34,7 +34,7 @@ class AptDao {
         return this.common.findAll(sqlRequest).then(rows => {
             let apts = [];
             for (const row of rows) {
-                apts.push(new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, row.imgUrl));
+                apts.push(new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price));
             }
             return apts;
         });
@@ -65,7 +65,6 @@ class AptDao {
             "arnona=$arnona " +
             "vaad=$vaad " +
             "price=$price " +
-            "imgUrl=$imgUrl " +
             "WHERE id=$id";
 
         let sqlParams = {
@@ -78,7 +77,6 @@ class AptDao {
             $arnona: Apt.arnona,
             $vaad: Apt.vaad,
             $price: Apt.price,
-            $imgUrl: Apt.imgUrl,
             $id: Apt.id
         };
         return this.common.run(sqlRequest, sqlParams);
@@ -90,8 +88,8 @@ class AptDao {
      * returns database insertion status
      */
     create(Apt) {
-        let sqlRequest = "INSERT into apt (address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price, imgUrl) " +
-            "VALUES ($address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price, $imgUrl)";
+        let sqlRequest = "INSERT into apt (address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) " +
+            "VALUES ($address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price)";
         let sqlParams = {
             $address: Apt.address,
             $floor: Apt.floor,
@@ -102,7 +100,6 @@ class AptDao {
             $arnona: Apt.arnona,
             $vaad: Apt.vaad,
             $price: Apt.price,
-            $imgUrl: Apt.imgUrl,
         };
         return this.common.run(sqlRequest, sqlParams);
     };
@@ -113,8 +110,8 @@ class AptDao {
      * returns database insertion status
      */
     createWithId(Apt) {
-        let sqlRequest = "INSERT into apt (id, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price, imgUrl) " +
-            "VALUES ($id, ($address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price, $imgUrl)";
+        let sqlRequest = "INSERT into apt (id, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) " +
+            "VALUES ($id, ($address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price)";
         let sqlParams = {
             $id: Apt.id,
             $address: Apt.address,
@@ -126,7 +123,6 @@ class AptDao {
             $arnona: Apt.arnona,
             $vaad: Apt.vaad,
             $price: Apt.price,
-            $imgUrl: Apt.imgUrl
         };
         return this.common.run(sqlRequest, sqlParams);
     };

@@ -16,10 +16,10 @@ app.listen(port, function () {
 });
 
 /* Express configuration */
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.json());
+
 
 /* Router configuration */
 const REST_API_ROOT = '/api';
 app.use(REST_API_ROOT, require('./app/routes/router'));
-

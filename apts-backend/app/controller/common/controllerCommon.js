@@ -18,8 +18,9 @@ class controllerCommon {
     }
 
     editSuccess(res) {
-        return () => {
+        return (result) => {
             res.status(201); // Created/Updated/Deleted
+            res.locals.id=result;
             res.json({});
         }
     }

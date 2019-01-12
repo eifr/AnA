@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AptService {
 
-  private aptsUrl = 'https://aa-realestate.co.il/api/apts';  // URL to web api
+  private aptsUrl = 'https://aa-realestate.co.il/api/apt';  // URL to web api
 
 
   constructor(

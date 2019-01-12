@@ -4,6 +4,10 @@ const Apt = require('../model/apt');
 /* Load DAO Common functions */
 const daoCommon = require('./commons/daoCommon');
 
+
+let fs = require('fs-extra');
+
+
 /**
  * Apt Data Access Object
  */
@@ -21,8 +25,9 @@ class AptDao {
     findById(id) {
         let sqlRequest = "SELECT * FROM apt WHERE id=$id";
         let sqlParams = {$id: id};
+        var photos = fs.readdirSync('./aptImages/'+id+'/');
         return this.common.findOne(sqlRequest, sqlParams).then(row =>
-            new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price));
+            new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
     };
 
     /**
@@ -33,8 +38,10 @@ class AptDao {
         let sqlRequest = "SELECT * FROM apt";
         return this.common.findAll(sqlRequest).then(rows => {
             let apts = [];
+            
             for (const row of rows) {
-                apts.push(new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price));
+                var photos = fs.readdirSync('./aptImages/'+row.id+'/');
+                apts.push(new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
             }
             return apts;
         });

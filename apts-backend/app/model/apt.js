@@ -3,7 +3,7 @@
  */
 
 class Apt {
-    constructor(id, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) {
+    constructor(id, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price, photos) {
         this.id = id;
         this.address = address;
         this.floor = floor;
@@ -14,6 +14,7 @@ class Apt {
         this.arnona = arnona;
         this.vaad = vaad;
         this.price = price;
+        this.photos = photos;
     }
 }
 

@@ -42,6 +42,7 @@ router.get('/:id', function (req, res) {
 
 router.get('/', function (req, res) {
     aptController.findAll(res);
+
 });
 
 router.put('/:id', function (req, res) {

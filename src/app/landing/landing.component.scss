@@ -8,8 +8,8 @@ $url: "./assets/img/landing-bg.jpg";
 .bg-image {
   background-image: url($url);
 
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
 
   transform: scale(1.01);
 

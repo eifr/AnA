@@ -1,6 +1,7 @@
 export class Apt {
   id: number;
-  location: string;
+  city: string;
+  address: string;
   rooms: number;
   sizeInMtrs: number;
   parking: boolean;

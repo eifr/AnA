@@ -27,7 +27,7 @@ class AptDao {
         let sqlParams = {$id: id};
         var photos = fs.readdirSync('./aptImages/'+id+'/');
         return this.common.findOne(sqlRequest, sqlParams).then(row =>
-            new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
+            new Apt(row.id, row.city, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
     };
 
     /**
@@ -41,7 +41,7 @@ class AptDao {
             
             for (const row of rows) {
                 var photos = fs.readdirSync('./aptImages/'+row.id+'/');
-                apts.push(new Apt(row.id, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
+                apts.push(new Apt(row.id, row.city, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
             }
             return apts;
         });
@@ -63,6 +63,7 @@ class AptDao {
      */
     update(Apt) {
         let sqlRequest = "UPDATE apt SET " +
+            "city=$city, " +  
             "address=$address, " +
             "floor=$floor, " +
             "rooms=$rooms, " +
@@ -95,9 +96,10 @@ class AptDao {
      * returns database insertion status
      */
     create(Apt) {
-        let sqlRequest = "INSERT into apt (address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) " +
-            "VALUES ($address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price)";
+        let sqlRequest = "INSERT into apt (city, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) " +
+            "VALUES ($city, $address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price)";
         let sqlParams = {
+            $city: Apt.city,
             $address: Apt.address,
             $floor: Apt.floor,
             $rooms: Apt.rooms,
@@ -117,10 +119,11 @@ class AptDao {
      * returns database insertion status
      */
     createWithId(Apt) {
-        let sqlRequest = "INSERT into apt (id, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) " +
-            "VALUES ($id, ($address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price)";
+        let sqlRequest = "INSERT into apt (id, city, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) " +
+            "VALUES ($id, $city, $address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price)";
         let sqlParams = {
             $id: Apt.id,
+            $city: Apt.city,
             $address: Apt.address,
             $floor: Apt.floor,
             $rooms: Apt.rooms,

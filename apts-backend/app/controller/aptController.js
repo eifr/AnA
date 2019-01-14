@@ -59,6 +59,7 @@ class AptController {
     update(req, res) {
         let apt = new Apt();
         apt.id = req.body.id;
+        apt.city = req.body.city;
         apt.address = req.body.address;
         apt.floor = req.body.floor;
         apt.rooms = req.body.rooms;
@@ -84,6 +85,7 @@ class AptController {
         if (req.body.id) {
             apt.id = req.body.id;
         }
+        apt.city = req.body.city;
         apt.address = req.body.address;
         apt.floor = req.body.floor;
         apt.rooms = req.body.rooms;

@@ -12,6 +12,7 @@ let db = new sqlite3.Database('./apts.db');
 let init = function () {
     db.run("CREATE TABLE if not exists apt (" +
         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        " city TEXT, " +
         " address TEXT," +
         " floor INT," +
         " rooms REAL," +

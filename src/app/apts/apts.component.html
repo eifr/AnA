@@ -1,4 +1,4 @@
-<ul class="apts">
+<!-- <ul class="apts">
   <li *ngFor="let apt of apts">
     <a routerLink="/detail/{{apt.id}}">
       <span class="badge">{{apt.id}}, {{apt.address}}</span> 
@@ -11,3 +11,19 @@
       (click)="delete(apt)">x</button>
   </li>
 </ul>
+-->
+
+<div class="slider" >
+  <div  *ngFor="let apt of apts" class="apt">
+    <a routerLink="/detail/{{apt.id}}">
+      <img class="coverImg" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="">
+
+
+      <h1 class="badge">{{apt.id}}</h1> 
+      <span> {{apt.address}} </span>
+
+    </a>
+    
+  </div>
+
+</div>

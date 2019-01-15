@@ -1,3 +1,10 @@
+
+/* Base parameters */
+$cardsPaddingX: 10px;
+$aptsCardsMargin: 5px;
+
+/* Mobile Design */
+
 .slider {
     /* line them up horizontally */
     display: flex;
@@ -16,14 +23,18 @@
     
   }
 
-
   .apt{
+
+    animation: scl 0.5s ease-in-out;
+    transform-origin: left center;
+
+
         /* make sure the width is honored */
         flex-shrink: 0;
         flex-direction: column-reverse;
         
         width: 65vw;
-        height: 87vw;
+        height: 90vw;
     
         scroll-snap-align: center;
         overflow: hidden;
@@ -31,7 +42,7 @@
         border-radius: 30px;
     
         background: #eeeeee;
-        margin: 0 5px;
+        margin: 0 $aptsCardsMargin;
 
         a{
             text-decoration: none;
@@ -45,7 +56,7 @@
         .aptContent {
             display: grid;
             grid-template-rows: auto auto auto;
-            padding: 5px 16px;
+            padding: 0 $cardsPaddingX;
             height: 37%;
             
             .title {
@@ -54,6 +65,9 @@
             .extraInfo {
                 color:#5e5e5e;
                 margin: 0;
+                padding: 0;
+                list-style-type: circle;
+                list-style-position: inside;
             }
             .links a {
                 margin-left: 5px;
@@ -63,6 +77,53 @@
         }
   }
 
+/* Tablet Design */
 
+  @media only screen and (min-width: 600px) {
+      .apt {
+        height: 80vw;
+        margin: 0 calc(#{$aptsCardsMargin}*4);
+        font-size: 1.5em;
+
+        .aptContent {
+            padding: 0 calc(#{$cardsPaddingX}*4);
+            
+            .title {
+
+            }
+            .extraInfo {
+
+            }
+            .links a {
+
+            }
+        }
+      }
+  }
+
+
+  /* Desktop Design */ 
+
+  @media only screen and (min-width: 1025px) {
+    .apt {
+        height: 25vw;
+        margin: 0 calc(#{$aptsCardsMargin}*5);
+        font-size: 1.3vw;
+        width: 18vw;
+    }
+  }
 
  
+  @keyframes scl {
+    0% {
+      opacity: 0;
+      transform: scaleX(0.9) translateX(-50px);
+    }
+    75% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: scaleX(1) translateX(0);
+      opacity: 1;
+    }
+  }

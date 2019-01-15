@@ -2,7 +2,7 @@ $url: "./assets/img/landing-bg.jpg";
 
 .container {
   overflow: hidden;
-  height: 90vh;
+  height: 85vh;
 }
 
 .bg-image {
@@ -24,7 +24,7 @@ $url: "./assets/img/landing-bg.jpg";
 .route {
   display: block;
   position: relative;
-  padding-top: 7vh;
+  padding-top: 12vh;
 //padding-left: 5vw;
   // padding-right: 5vw;
 }
@@ -33,4 +33,18 @@ $url: "./assets/img/landing-bg.jpg";
   position: relative;
   top:3vh;
   width: 100%;
+}
+
+/* Tablet Design */
+@media only screen and (min-width: 600px) {
+  .route {
+    padding-top: 16vh;
+  }
+}
+
+/* Desktop Design */
+@media only screen and (min-width: 1025px) {
+  .route {
+    padding-top: 22vh;
+  }
 }

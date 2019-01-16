@@ -1,26 +1,32 @@
 $url: "./assets/img/landing-bg.webp";
 
 .container {
-  //overflow: hidden;
-  height: 85vh;
+  min-height: 88vh;
+  background: black;
+  margin-bottom: 15vh;
+  box-shadow: 3px 2px 2px 0px rgba(51,51,51,0.5);
+  position: relative;
 }
 
-.bg-image {
+.container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url($url);
-
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   filter: blur(3px);
   -webkit-filter: blur(3px);
 
   transform: scale(1.01);
-
-  height: inherit;
-  width: 100%;
-
-  position: absolute;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
+
+
+
 .route {
   display: block;
   position: relative;
@@ -46,5 +52,10 @@ $url: "./assets/img/landing-bg.webp";
 @media only screen and (min-width: 1025px) {
   .route {
     padding-top: 22vh;
+  }
+
+  .container {
+    min-height: 85vh;
+    margin-bottom: 0;
   }
 }

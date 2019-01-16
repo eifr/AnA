@@ -10,6 +10,8 @@ const aptController = new AptController();
 let multer = require('multer');
 let fs = require('fs-extra');
 
+/* Load webp converter */
+var webp=require('webp-converter');
 
 var storage = multer.diskStorage({
     destination:'./aptImages/',
@@ -67,11 +69,23 @@ router.post('/create', upload.any(), function (req, res) {
                 
                 //Naming and saving file
                 let filename = dir + i + '-' +  file.originalname;
-                i++;
+                
                 fs.rename(file.path, filename, function(err) {
                     if(err)throw err;
                 })
 
+                webp.cwebp(filename, dir+i+".webp" ,"-q 80",function(status,error) {
+                    //if conversion successful status will be '100'
+                    if(status==='100'){
+                        fs.unlink(filename, (err) => {
+                            if (err) throw err;
+                        // console.log(filename+' was deleted');
+                        });
+                    }
+            	    //if conversion fails status will be '101'
+              	   // console.log(status,error);	
+                });
+                i++;
             })
         }
         

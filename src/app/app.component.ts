@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'AnA';
+
+  constructor(private meta: Meta, private title: Title) {
+    this.meta.addTags([
+      {name: 'description', content: 'Modern Real Estate in Tel Aviv Area'},
+      {name: 'author', content: 'eifr'},
+      {name: 'title', content: 'תיווך A&A'},
+      {name: 'theme-color', content: '#2c3d4f'}
+    ]);
+
+    this.title.setTitle('תיווך A&A');
+    screen.orientation.lock('landscape');
+  }
+
+  // title = 'AnA';
 
 
 }

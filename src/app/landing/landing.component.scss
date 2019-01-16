@@ -1,7 +1,7 @@
-$url: "./assets/img/landing-bg.jpg";
+$url: "./assets/img/landing-bg.webp";
 
 .container {
-  overflow: hidden;
+  //overflow: hidden;
   height: 85vh;
 }
 
@@ -16,7 +16,7 @@ $url: "./assets/img/landing-bg.jpg";
   height: inherit;
   width: 100%;
 
-  position: fixed;
+  position: absolute;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

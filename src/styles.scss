@@ -13,3 +13,11 @@ body {
 body * {
   font-family: $font;
 }
+
+
+
+// Style for global apts list 
+.cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  flex-direction: row;
+}

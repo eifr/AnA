@@ -1,18 +1,3 @@
-<!-- <ul class="apts">
-  <li *ngFor="let apt of apts">
-    <a routerLink="/detail/{{apt.id}}">
-      <span class="badge">{{apt.id}}, {{apt.address}}</span> 
-    </a>
-    <img style="width:1000px" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="">
-    <img style="width:1000px" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[1]}}" alt="">
-    <img style="width:1000px" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[2]}}" alt="">
-
-    <button class="delete" title="delete apt"
-      (click)="delete(apt)">x</button>
-  </li>
-</ul>
--->
-
 <div class="slider" dir="rtl" >
   <div  *ngFor="let apt of apts" class="apt" >
     <a routerLink="/detail/{{apt.id}}">
@@ -41,3 +26,12 @@
   </div>
 
 </div>
+
+<!--
+<cdk-virtual-scroll-viewport [itemSize]="70" orientation="horizontal" class="slider" dir="rtl">
+  <div *cdkVirtualFor="let apt of apts" class="apt">
+    <h2 class="title">{{apt.city}}</h2>
+  </div>
+
+</cdk-virtual-scroll-viewport>
+-->

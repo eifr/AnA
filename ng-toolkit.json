@@ -1,0 +1,8 @@
+{
+  "universal": {
+    "project": "AnA",
+    "skipInstall": false,
+    "directory": ".",
+    "http": true
+  }
+}

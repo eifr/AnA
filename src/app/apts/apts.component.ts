@@ -21,8 +21,6 @@ export class AptsComponent implements OnInit {
   getApts(): void {
     this.aptService.getApts()
     .subscribe(apts => this.apts = apts);
-
-    console.log(this.apts);
   }
 
 }

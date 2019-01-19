@@ -20,7 +20,7 @@ export class AppComponent {
     ]);
 
     this.title.setTitle('תיווך A&A');
-    screen.orientation.lock('landscape');
+    // screen.orientation.lock('landscape');
   }
 
   // title = 'AnA';

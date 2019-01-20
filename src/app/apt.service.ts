@@ -31,6 +31,15 @@ export class AptService {
       );
   }
 
+   /** GET hero by id. Will 404 if id not found */
+   getApt(id: number): Observable<Apt> {
+    const url = `${this.aptsUrl}/${id}`;
+    return this.http.get<Apt>(url).pipe(
+      tap(_ => this.log(`fetched apt id=${id}`)),
+      catchError(this.handleError<Apt>(`getApt id=${id}`))
+    );
+  }
+
 
 
 

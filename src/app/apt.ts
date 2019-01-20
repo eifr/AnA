@@ -9,5 +9,5 @@ export class Apt {
   arnona: number;
   vaad: number;
   price: number;
-  photo: string[];
+  photos: string[];
 }

@@ -1,0 +1,16 @@
+<div *ngIf="apt" class="container">
+  
+
+
+  <div class="content">
+
+    <h2>{{apt.city}} Details</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="apt.city" placeholder="city"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+  </div>
+</div>

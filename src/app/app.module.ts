@@ -22,6 +22,7 @@ import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AptsComponent } from './apts/apts.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AptDetailComponent } from './apt-detail/apt-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     AboutComponent,
     ProjectsComponent,
     AptsComponent,
+    AptDetailComponent,
 
   ],
   imports:[

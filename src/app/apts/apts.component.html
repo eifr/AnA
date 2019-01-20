@@ -1,6 +1,7 @@
 <div class="slider" dir="rtl" >
   <div  *ngFor="let apt of apts" class="apt" >
     <a routerLink="/detail/{{apt.id}}">
+      
       <img class="coverImg" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="">
 
       <div class="aptContent">

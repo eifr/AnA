@@ -74,7 +74,7 @@ router.post('/create', upload.any(), function (req, res) {
                     if(err)throw err;
                 })
 
-                webp.cwebp(filename, dir+i+".webp" ,"-q 80",function(status,error) {
+             /*   webp.cwebp(filename, dir+i+".webp" ,"-q 80",function(status,error) {
                     //if conversion successful status will be '100'
                     if(status==='100'){
                         fs.unlink(filename, (err) => {
@@ -84,7 +84,7 @@ router.post('/create', upload.any(), function (req, res) {
                     }
             	    //if conversion fails status will be '101'
               	   // console.log(status,error);	
-                });
+                }); */
                 i++;
             })
         }

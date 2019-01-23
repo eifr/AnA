@@ -1,10 +1,11 @@
 import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -49,6 +50,7 @@ HttpClientModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatIconModule,

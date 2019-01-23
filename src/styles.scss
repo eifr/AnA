@@ -5,9 +5,12 @@
 
 $font: 'Assistant', sans-serif;
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
-  overflow-x: hidden;
   background: #2c3d4f;
 }
 body * {

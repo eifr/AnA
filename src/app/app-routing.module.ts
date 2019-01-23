@@ -8,10 +8,10 @@ import { ProjectsComponent } from './projects/projects.component';
 import { AptDetailComponent } from './apt-detail/apt-detail.component';
 
 const routes: Routes = [
-  { path: 'home',        component: HomepageComponent },
-  { path: 'about',        component: AboutComponent },
+  { path: 'home',        component: HomepageComponent, data: {animation: 'HomePage'}  },
+  { path: 'about',        component: AboutComponent},
   { path: 'projects',        component: ProjectsComponent },
-  { path: 'detail/:id', component: AptDetailComponent },
+  { path: 'detail/:id', component: AptDetailComponent, data: {animation: 'AboutPage'}  },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
   

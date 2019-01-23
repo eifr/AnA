@@ -3,7 +3,7 @@ export class Apt {
   city: string;
   address: string;
   rooms: number;
-  sizeInMtrs: number;
+  sqrMtr: number;
   parking: boolean;
   storage: boolean;
   arnona: number;

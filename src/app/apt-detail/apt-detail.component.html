@@ -1,16 +1,28 @@
-<div *ngIf="apt" class="container">
-  
+<div *ngIf="apt" class="container" dir="rtl">
+  <div class="topSection">
+    <div class="mainContent">
+      <h1>{{apt.city}}</h1>
 
 
-  <div class="content">
 
-    <h2>{{apt.city}} Details</h2>
-  <div>
-    <label>name:
-      <input [(ngModel)]="apt.city" placeholder="city"/>
-    </label>
+      <div class="details">
+        <h3>{{apt.address}}</h3>
+        <span>{{apt.rooms}} חדרים</span>
+        <span>גודל: {{apt.sqrMtr}} מ"ר</span>
+        <span *ngIf="apt.parking==1">✔️ חנייה</span>
+        <span *ngIf="apt.storage==1">✔️ אחסון</span>
+
+      </div>
+
+    </div>
+
+    <a (click)="goBack()" alt="חזור" title="חזור">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+
+  <div class="secContent ">
+    <h2 *ngIf="apt.price">{{apt.price}}₪</h2>
   </div>
+
 </div>

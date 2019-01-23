@@ -32,6 +32,7 @@ export class AptDetailComponent implements OnInit {
     this.aptService.getApt(id)
       .subscribe(apt => {
         this.apt = apt;
+        // console.log(this.apt);
         this.landingPage.setImageUrl(this.apt.photos, this.apt.id);
       });
   }
@@ -41,6 +42,5 @@ export class AptDetailComponent implements OnInit {
     this.landingPage.setHomepage();
   }
 
- 
 
 }

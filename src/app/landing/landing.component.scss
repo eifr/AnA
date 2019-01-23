@@ -6,6 +6,8 @@ $url: "./assets/img/landing-bg.jpg";
   margin-bottom: 15vh;
   box-shadow: 3px 2px 2px 0px rgba(51,51,51,0.5);
   position: relative;
+  
+
 }
 
 .bgImage *, .bgImage{
@@ -19,10 +21,45 @@ $url: "./assets/img/landing-bg.jpg";
  // background-position: center;
  // background-repeat: no-repeat;
  // background-size: cover;
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
+}
 
-  transform: scale(1.01);
+@keyframes filter-animation {
+  0% {
+    -webkit-filter: blur(3px) ;
+  }
+  
+  50% {
+    -webkit-filter: blur(2px) ;
+  }
+  
+  100% {
+    -webkit-filter: blur(0) ;
+  }
+}
+
+.homepage {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding-bottom: 5%;
+
+  .bgImage {
+
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+  
+    transform: scale(1.01);
+  }
+}
+.detail {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+
+  .bgImage{
+    height: 50%;
+    animation: filter-animation 0.3s; 
+  }
+  
 }
 
 
@@ -30,9 +67,6 @@ $url: "./assets/img/landing-bg.jpg";
 .route {
   display: block;
   position: relative;
-  padding-top: 12vh;
-//padding-left: 5vw;
-  // padding-right: 5vw;
 }
 
 .navbar {
@@ -46,7 +80,24 @@ $url: "./assets/img/landing-bg.jpg";
   .route {
     padding-top: 16vh;
   }
+
+  .detail {
+    display: grid;
+    grid-template-rows: auto auto;
+    padding-bottom: 0; 
+  
+    .bgImage{
+      height: 100%;
+    }
+  }
+
+  .homepage {
+    display: grid;
+    justify-content: normal;
+    padding-bottom: 0; 
+  }
 }
+
 
 /* Desktop Design */
 @media only screen and (min-width: 1025px) {

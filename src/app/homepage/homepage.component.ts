@@ -8,7 +8,10 @@ import { Apt } from '../apt';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+ 
+  constructor() {
+  }
+
 
   ngOnInit() {
   }

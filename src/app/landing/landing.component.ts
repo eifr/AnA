@@ -20,7 +20,7 @@ export class LandingComponent implements OnInit {
   bgState = 'homepage';
   
   private imgUrl = 'https://aa-realestate.co.il/aptImages/';
-  private homepage = 'https://aa-realestate.co.il/landing-bg.523f53046e6210bfe7f5.jpg';
+  private homepage = './assets/img/landing-bg.jpg';
   
   constructor() {
    }
@@ -31,12 +31,13 @@ export class LandingComponent implements OnInit {
   }
 
   
-  setImageUrl(photos, id): void {
+  setImageUrl(photos, id) {
     for (let index = 0; index < photos.length; index++) {
       this.url[index] = this.imgUrl + id + '/' + photos[index];
      // console.log(this.url);
     }
     this.bgState = 'detail';
+    return this.url[0];
   }
 
   setHomepage(): void {

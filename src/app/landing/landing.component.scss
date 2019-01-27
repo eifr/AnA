@@ -6,7 +6,8 @@ $url: "./assets/img/landing-bg.jpg";
   margin-bottom: 15vh;
   box-shadow: 3px 2px 2px 0px rgba(51,51,51,0.5);
   position: relative;
-  
+  display: grid;
+  grid-template-rows: 1fr 2fr;
 
 }
 
@@ -38,9 +39,6 @@ $url: "./assets/img/landing-bg.jpg";
 }
 
 .homepage {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
   padding-bottom: 5%;
 
   .bgImage {
@@ -52,8 +50,6 @@ $url: "./assets/img/landing-bg.jpg";
   }
 }
 .detail {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
 
   .bgImage{
     height: 50%;
@@ -77,13 +73,10 @@ $url: "./assets/img/landing-bg.jpg";
 
 /* Tablet Design */
 @media only screen and (min-width: 600px) {
-  .route {
-    padding-top: 16vh;
-  }
+
 
   .detail {
     display: grid;
-    grid-template-rows: auto auto;
     padding-bottom: 0; 
   
     .bgImage{
@@ -101,9 +94,7 @@ $url: "./assets/img/landing-bg.jpg";
 
 /* Desktop Design */
 @media only screen and (min-width: 1025px) {
-  .route {
-    padding-top: 22vh;
-  }
+
 
   .container {
     min-height: 85vh;

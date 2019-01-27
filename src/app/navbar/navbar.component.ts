@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LandingComponent } from '../landing/landing.component' ;
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private location: Location,
+    private landingPage: LandingComponent
+  ) { }
 
   ngOnInit() {
     let mainNav = document.getElementById('js-menu');
@@ -17,6 +22,11 @@ export class NavbarComponent implements OnInit {
       mainNav.classList.toggle('active');
     });
 
+  }
+
+  goBack(): void {
+    this.location.back();
+    this.landingPage.setHomepage();
   }
 
 }

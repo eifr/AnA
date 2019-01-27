@@ -1,4 +1,4 @@
-<div *ngIf="apt" class="container" dir="rtl">
+<div *ngIf="apt" class="container" dir="rtl" itemscope itemtype="http://schema.org/Apartment">
   <div class="topSection">
     <div class="mainContent">
       <h1>{{apt.city}}</h1>
@@ -7,18 +7,18 @@
 
       <div class="details">
         <h3>{{apt.address}}</h3>
-        <span>{{apt.rooms}} חדרים</span>
-        <span>גודל: {{apt.sqrMtr}} מ"ר</span>
-        <span *ngIf="apt.parking==1">✔️ חנייה</span>
-        <span *ngIf="apt.storage==1">✔️ אחסון</span>
+        <span itemprop="numberOfRooms">{{apt.rooms}} חדרים</span>
+        <span itemprop="floorSize">גודל: {{apt.sqrMtr}} מ"ר</span>
+        <span *ngIf="apt.parking==1" >✔️ חנייה</span>
+        <span *ngIf="apt.storage==1" >✔️ אחסון</span>
 
       </div>
 
     </div>
 
     <a (click)="goBack()" alt="חזור" title="חזור">
-        <mat-icon>arrow_back</mat-icon>
-      </a>
+      <mat-icon>arrow_back</mat-icon>
+    </a>
   </div>
 
   <div class="secContent ">

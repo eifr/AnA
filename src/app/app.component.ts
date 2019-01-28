@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
+import { Component , OnInit} from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 
@@ -7,9 +8,22 @@ import { Meta, Title } from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+public ngOnInit():void {
+        if (this.swUpdate.isEnabled) {
+            this.swUpdate.available.subscribe((evt) => {
+                console.log('service worker updated');
+            });
+    
+            this.swUpdate.checkForUpdate().then(() => {
+                // noop
+            }).catch((err) => {
+                console.error('error when checking for update', err);
+            });
+        }}
 
-  constructor(private meta: Meta, private title: Title) {
+
+  constructor(private swUpdate: SwUpdate, private meta: Meta, private title: Title) {
     this.meta.addTags([
       {name: 'description', content: 'Modern Real Estate in Tel Aviv Area'},
       {name: 'author', content: 'eifr'},

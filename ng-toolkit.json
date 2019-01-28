@@ -4,5 +4,14 @@
     "skipInstall": false,
     "directory": ".",
     "http": true
+  },
+  "pwa": {
+    "--": [
+      "[--serverModule",
+      "/src/app/app.server.module.ts]"
+    ],
+    "project": "AnA",
+    "skipInstall": false,
+    "directory": "."
   }
 }

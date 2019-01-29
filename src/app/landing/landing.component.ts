@@ -4,15 +4,15 @@ import {
   animation, trigger, animateChild, group,
   transition, animate, style, query
 } from '@angular/animations';
-import { slideInAnimation } from '../animations';
+import { slideInAnimation, bgChange } from '../animations';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
   animations: [
-    slideInAnimation
-    // animation triggers go here
+    slideInAnimation,
+    bgChange
   ]
 })
 export class LandingComponent implements OnInit {
@@ -41,8 +41,10 @@ export class LandingComponent implements OnInit {
   }
 
   setHomepage(): void {
-    this.url[0] = this.homepage;
-    this.bgState = 'homepage';
+    if (this.bgState != 'homepage') {
+      this.url[0] = this.homepage;
+      this.bgState = 'homepage';
+    }
   }
 
   prepareRoute(outlet: RouterOutlet) {

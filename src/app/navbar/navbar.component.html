@@ -3,7 +3,7 @@
 <section>
   <nav class="navbar">
 
-          <a  (click)="goBack()" class="logo" >
+          <a  (click)="goHome()" routerLink="/home" class="logo" >
           <h1>A&A</h1>
           <h2>
             <span style="color:#E7C977;">Real </span>
@@ -15,13 +15,13 @@
         </span>
           <ul class="main-nav" id="js-menu">
               <li>
-                  <a routerLink="/home" routerLinkActive="active" class="nav-links">דף הבית</a>
+                  <a routerLink="/home" (click)="goHome()" routerLinkActive="active" class="nav-links">דף הבית</a>
               </li>
               <li>
-                  <a routerLink="/projects" routerLinkActive="active" class="nav-links">פרוייקטים</a>
+                  <a routerLink="/projects" (click)="goHome()" routerLinkActive="active" class="nav-links">פרוייקטים</a>
               </li>
               <li>
-                  <a routerLink="/about" routerLinkActive="active" class="nav-links">אודות</a>
+                  <a routerLink="/about" (click)="goHome()"  routerLinkActive="active" class="nav-links">אודות</a>
               </li>
           </ul>
       </nav>

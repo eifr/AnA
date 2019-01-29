@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Apt } from '../apt';
 import { AptService } from '../apt.service';
+import { Observable, Subject } from 'rxjs';
 
 
 @Component({
@@ -10,8 +11,8 @@ import { AptService } from '../apt.service';
   styleUrls: ['./apts.component.scss']
 })
 export class AptsComponent implements OnInit {
-  apts: Apt[];
-
+  apts$: Observable<Apt[]>;
+  searchText: string;
   constructor(private aptService: AptService) { }
 
   ngOnInit() {
@@ -19,8 +20,8 @@ export class AptsComponent implements OnInit {
   }
 
   getApts(): void {
-    this.aptService.getApts()
-    .subscribe(apts => this.apts = apts);
+    this.apts$ = this.aptService.getApts();
+    
   }
 
 }

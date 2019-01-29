@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { LandingComponent } from '../landing/landing.component' ;
-import { Location } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { LandingComponent } from '../landing/landing.component';
+import { Location, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -10,22 +10,23 @@ import { Location } from '@angular/common';
 export class NavbarComponent implements OnInit {
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private location: Location,
     private landingPage: LandingComponent
   ) { }
 
   ngOnInit() {
-    let mainNav = document.getElementById('js-menu');
-    let navBarToggle = document.getElementById('js-navbar-toggle');
+    if (isPlatformBrowser(this.platformId)) {
+      let mainNav = document.getElementById('js-menu');
+      let navBarToggle = document.getElementById('js-navbar-toggle');
 
-    navBarToggle.addEventListener('click', function () {
-      mainNav.classList.toggle('active');
-    });
-
+      navBarToggle.addEventListener('click', function () {
+        mainNav.classList.toggle('active');
+      });
+    }
   }
 
-  goBack(): void {
-    this.location.back();
+  goHome(): void {
     this.landingPage.setHomepage();
   }
 

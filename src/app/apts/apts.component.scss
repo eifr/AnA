@@ -18,7 +18,7 @@ $aptsCardsMargin: 5px;
 }
 
 .apt {
-    animation: scl 0.5s ease-in-out;
+  //  animation: scl 0.5s ease-in-out;
     transform-origin: left center;
     /* make sure the width is honored */
     flex-shrink: 0;
@@ -86,7 +86,7 @@ $aptsCardsMargin: 5px;
     }
 }
 
-@keyframes scl {
+/* @keyframes scl {
     0% {
         opacity: 0;
         transform: scaleX(0.9) translateX(-50px);
@@ -98,4 +98,4 @@ $aptsCardsMargin: 5px;
         transform: scaleX(1) translateX(0);
         opacity: 1;
     }
-}
+} */

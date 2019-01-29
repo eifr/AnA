@@ -33,6 +33,7 @@
     "@nguniversal/common": "~7.1.0",
     "@nguniversal/express-engine": "~7.1.0",
     "@nguniversal/module-map-ngfactory-loader": "~7.1.0",
+    "angularx-social-login": "^1.2.6",
     "core-js": "^2.6.3",
     "cors": "~2.8.4",
     "rxjs": "~6.3.3",

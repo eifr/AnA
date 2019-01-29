@@ -1,8 +1,12 @@
+<div class="md-form">
+    <input type="search" [(ngModel)]="searchText" placeholder="Search text">
+  </div>
+
 <div class="slider" dir="rtl" >
-  <div  *ngFor="let apt of apts" class="apt" >
+  <div  *ngFor="let apt of (apts$ |  async | filter: searchText )" class="apt" >
     <a routerLink="/detail/{{apt.id}}">
       
-      <img class="coverImg" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="">
+      <img class="coverImg" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="Apt Image" title="דירה חדשה ב{{apt.city}}">
 
       <div class="aptContent">
 

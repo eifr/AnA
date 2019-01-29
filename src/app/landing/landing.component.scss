@@ -23,7 +23,7 @@ $url: "./assets/img/landing-bg.jpg";
  // background-repeat: no-repeat;
  // background-size: cover;
 }
-
+/*
 @keyframes filter-animation {
   0% {
     -webkit-filter: blur(3px) ;
@@ -36,7 +36,8 @@ $url: "./assets/img/landing-bg.jpg";
   100% {
     -webkit-filter: blur(0) ;
   }
-}
+} 
+*/
 
 .homepage {
   padding-bottom: 5%;
@@ -53,7 +54,7 @@ $url: "./assets/img/landing-bg.jpg";
 
   .bgImage{
     height: 50%;
-    animation: filter-animation 0.3s; 
+   // animation: filter-animation 0.3s; 
   }
   
 }

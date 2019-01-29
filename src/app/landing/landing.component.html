@@ -1,10 +1,7 @@
 <div class="container {{bgState}}">
 
-  <div class="bgImage " >
-    <img src="{{url[0]}}" alt="" >
-    
-
-
+  <div class="bgImage" [@bgAnimation]= "bgState">
+    <img [src]="url[0]" alt="" >
   </div>
   
   <div class="navbar">

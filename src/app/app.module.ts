@@ -6,8 +6,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,6 +24,22 @@ import { ProjectsComponent } from './projects/projects.component';
 import { AptsComponent } from './apts/apts.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AptDetailComponent } from './apt-detail/apt-detail.component';
+import { FilterPipe } from './filter.pipe';
+import { SignInComponent } from './sign-in/sign-in.component';
+
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("158720883166-cacroppdcmf1ngkqodl4b3vtv23a1ai7.apps.googleusercontent.com")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -37,16 +53,18 @@ import { AptDetailComponent } from './apt-detail/apt-detail.component';
     ProjectsComponent,
     AptsComponent,
     AptDetailComponent,
+    FilterPipe,
+    SignInComponent,
 
   ],
-  imports:[
- CommonModule,
-NgtUniversalModule,
- 
- TransferHttpCacheModule,
-HttpClientModule,
- 
-    
+  imports: [
+    CommonModule,
+    NgtUniversalModule,
+    SocialLoginModule,
+    TransferHttpCacheModule,
+    HttpClientModule,
+
+
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -54,8 +72,13 @@ HttpClientModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatIconModule,
-    ScrollingModule 
+    ScrollingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
 })
 export class AppModule { }

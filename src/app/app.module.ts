@@ -27,13 +27,16 @@ import { AptDetailComponent } from './apt-detail/apt-detail.component';
 import { FilterPipe } from './filter.pipe';
 import { SignInComponent } from './sign-in/sign-in.component';
 
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
-let config = new AuthServiceConfig([
+import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
+
+const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("158720883166-cacroppdcmf1ngkqodl4b3vtv23a1ai7.apps.googleusercontent.com")
+    provider: new GoogleLoginProvider('158720883166-cacroppdcmf1ngkqodl4b3vtv23a1ai7.apps.googleusercontent.com')
   }
 ]);
 
@@ -64,6 +67,8 @@ export function provideConfig() {
     TransferHttpCacheModule,
     HttpClientModule,
 
+    AdminModule,
+    AuthModule,
 
     FormsModule,
     HttpClientModule,

@@ -18,30 +18,30 @@ import { slideInAnimation, bgChange } from '../animations';
 export class LandingComponent implements OnInit {
   url = [];
   bgState = 'homepage';
-  
+
   private imgUrl = 'https://aa-realestate.co.il/aptImages/';
   private homepage = './assets/img/landing-bg.jpg';
-  
+
   constructor() {
-   }
+  }
 
 
   ngOnInit() {
     this.url[0] = this.homepage;
   }
 
-  
+
   setImageUrl(photos, id) {
     for (let index = 0; index < photos.length; index++) {
       this.url[index] = this.imgUrl + id + '/' + photos[index];
-     // console.log(this.url);
+      // console.log(this.url);
     }
     this.bgState = 'detail';
     return this.url[0];
   }
 
   setHomepage(): void {
-    if (this.bgState != 'homepage') {
+    if (this.bgState !== 'homepage') {
       this.url[0] = this.homepage;
       this.bgState = 'homepage';
     }

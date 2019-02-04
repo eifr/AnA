@@ -6,6 +6,13 @@ $aptsCardsMargin: 5px;
 /* Mobile Design */
 .apts-heading {
     color:white;
+    font-size: 11vw;
+    padding: 0 15px;
+    
+    h3 {
+        margin: 0;
+        text-shadow: 0px 2px 15px #333333d1;
+    }
 }
 .slider {
     /* line them up horizontally */
@@ -86,6 +93,10 @@ $aptsCardsMargin: 5px;
         margin: 0 calc(#{$aptsCardsMargin}*5);
         font-size: 1em;
         width: 18vw;
+    }
+    
+    .apts-heading {
+        font-size: 2vw;
     }
 }
 

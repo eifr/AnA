@@ -1,29 +1,29 @@
-
-
 <section>
-  <nav class="navbar">
+    <nav class="navbar">
 
-          <a  (click)="goBack()" class="logo" >
-          <img src="./assets/img/logo.png" alt="">
-          <h2>
-            <span style="color:#E7C977;">Real </span>
-            <span style="color:#CDCDCD;">Estate</span>
-          </h2>
+        <a routerLink="/home" (click)="setHomePage()" class="logo">
+            <img src="./assets/img/logo.png" alt="">
+            <h2>
+                <span style="color:#E7C977;">Real </span>
+                <span style="color:#CDCDCD;">Estate</span>
+            </h2>
         </a>
         <span class="navbar-toggle" id="js-navbar-toggle">
-            <i ><mat-icon>menu</mat-icon></i>
+            <i>
+                <mat-icon>menu</mat-icon>
+            </i>
         </span>
-          <ul class="main-nav" id="js-menu">
-              <li>
-                  <a routerLink="/home" routerLinkActive="active" class="nav-links">דף הבית</a>
-              </li>
-              <li>
-                  <a routerLink="/projects" routerLinkActive="active" class="nav-links">פרוייקטים</a>
-              </li>
-              <li>
-                  <a routerLink="/about" routerLinkActive="active" class="nav-links">אודות</a>
-              </li>
-          </ul>
-      </nav>
+        <ul class="main-nav" id="js-menu">
+            <li>
+                <a routerLink="/home" (click)="setHomePage()" routerLinkActive="active" class="nav-links">דף הבית</a>
+            </li>
+            <li>
+                <a routerLink="/projects"  (click)="setHomePage()" routerLinkActive="active" class="nav-links">פרוייקטים</a>
+            </li>
+            <li>
+                <a routerLink="/about"  (click)="setHomePage()" routerLinkActive="active" class="nav-links">אודות</a>
+            </li>
+        </ul>
+    </nav>
 
 </section>

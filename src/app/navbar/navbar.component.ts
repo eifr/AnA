@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LandingComponent } from '../landing/landing.component' ;
 import { Location } from '@angular/common';
+import {  Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private landingPage: LandingComponent
+    private landingPage: LandingComponent,
+    private title: Title
   ) { }
 
   ngOnInit() {
@@ -27,6 +29,10 @@ export class NavbarComponent implements OnInit {
   goBack(): void {
     this.location.back();
     this.landingPage.setHomepage();
+  }
+  setHomePage(): void {
+    this.landingPage.setHomepage();
+    this.title.setTitle('A&A RealEstate');
   }
 
 }

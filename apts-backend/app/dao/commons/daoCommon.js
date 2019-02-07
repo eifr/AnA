@@ -75,7 +75,7 @@ class Common {
             stmt.run(sqlParams, function (err) {
                 if (this.changes === 1) {
                     resolve(this.lastID);
-                    
+
                 } else if (this.changes === 0) {
                     reject(
                         new DaoError(21, "Entity not found")

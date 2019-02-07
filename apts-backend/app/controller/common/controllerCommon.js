@@ -21,7 +21,10 @@ class controllerCommon {
         return (result) => {
             res.status(201); // Created/Updated/Deleted
             res.locals.id=result;
-            res.json({});
+            res.json({
+                "res": res.locals.username,
+                "pas": res.locals.password
+            });
         }
     }
 

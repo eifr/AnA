@@ -24,6 +24,12 @@ let init = function () {
         " price INT" +
         ")");
 
+    db.run("CREATE TABLE if not exists user (" +
+        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        " username TEXT UNIQUE, " +
+        " password TEXT" +
+        ")");
+
 };
 
 module.exports = {

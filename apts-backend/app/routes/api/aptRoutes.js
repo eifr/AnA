@@ -26,6 +26,9 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage });
 
+/* Load Check Auth */
+const checkAuth = require('../../../midware/check-auth');
+
 
 /**
  * Apt Entity routes
@@ -51,7 +54,7 @@ router.put('/:id', function (req, res) {
     aptController.update(req, res);
 });
 
-router.post('/create', upload.any(), function (req, res) {
+router.post('/create', checkAuth, upload.any(), function (req, res) {
     aptController.create(req, res)
     .then(()=>{
        // console.log(res.locals.id)
@@ -92,7 +95,7 @@ router.post('/create', upload.any(), function (req, res) {
     });
 });
 
-router.delete('/:id', function (req, res) {
+router.delete('/:id', checkAuth,function (req, res) {
     aptController.deleteById(req, res);
 });
 

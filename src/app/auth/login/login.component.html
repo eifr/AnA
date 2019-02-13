@@ -1,3 +1,37 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h1>התחבר</h1>
+    <div class="form-group">
+      <p dir="rtl">
+        <mat-form-field appearance="standard">
+          <mat-label for="username">שם משתמש</mat-label>
+          <input type="text" formControlName="username" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" matInput placeholder="הכנס שם משתמש">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">Username is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <p dir="rtl">
+        <mat-form-field appearance="standard">
+          <mat-label for="password">סיסמא</mat-label>
+          <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" matInput placeholder="הכנס סיסמא">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+      </p>
+
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary" mat-raised-button>התחבר</button>
+      <mat-spinner *ngIf="loading" class="pl-2"></mat-spinner>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </form>
+</div>

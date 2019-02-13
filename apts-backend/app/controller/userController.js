@@ -48,43 +48,39 @@ class AptController {
 
 
     /**
-     * Tries to find an entity using its Id / Primary Key
+     * Tries to login an entity using its Id / password Key
      * @params req, res
      * @return entity
      */
-    login(req, res) {
+    login(req, res, next) {
         this.UserDao.findByUserName(req.body.username)
             .then(user => {
+
                 bcrypt.compare(req.body.password, user.password, (err, result) => {
                     if (err) {
-                        return res.status(401).json({
-                            message: "AUTH FAILED"
-                        });
+
+                        return this.common.notAuth(res);
                     }
 
                     if (result) {
                         const token = jwt.sign({
-                            id:user.id,
+                            id: user.id,
                             username: user.userName
                         },
-                         "SECRET",
-                         {
-                             expiresIn: "1h",
-                         });
+                            "SECRET",
+                            {
+                                expiresIn: "1h",
+                            });
                         return res.status(200).json({
                             message: "auth success",
                             token: token
                         })
                     }
-                    return res.status(401).json({
-                        message: "AUTH FAILED"
-                    });
+                    
+                    return this.common.notAuth(res);
                 });
-
             })
-            .catch(this.common.findError(res));
-
-
+            .catch(this.common.notAuthError(res));
     };
 
     /**

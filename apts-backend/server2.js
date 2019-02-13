@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+var cors = require('cors')
 
 /* Database configuration */
 const database = require('./app/config/dbconfig');
@@ -18,6 +19,7 @@ app.listen(port, function () {
 /* Express configuration */
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cors())
 
 /* Server headers config */
 app.use((req, res, next) => {

@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { NgModule } from '@angular/core';
 import { AuthRequestOptions } from './auth/auth-request';
-
+import { AuthService } from './auth/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import {MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
 
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,8 @@ import { AptDetailComponent } from './apt-detail/apt-detail.component';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './auth/login/login.component';
 import { RequestOptions } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -48,10 +51,10 @@ import { RequestOptions } from '@angular/http';
   imports: [
     CommonModule,
     NgtUniversalModule,
-
+    MatProgressSpinnerModule,
     TransferHttpCacheModule,
     HttpClientModule,
-
+    HttpModule,
     AdminModule,
     FormsModule,
     HttpClientModule,
@@ -60,13 +63,19 @@ import { RequestOptions } from '@angular/http';
     BrowserAnimationsModule,
     MatMenuModule,
     MatIconModule,
-    ScrollingModule
+    MatFormFieldModule,
+    MatInputModule,
+    ScrollingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ],
   providers: [
     {
       provide: RequestOptions, 
-      useClass: AuthRequestOptions
-    }
+      useClass: AuthRequestOptions,
+      
+    }, AuthGuard, AuthService
   ],
 })
 export class AppModule { }

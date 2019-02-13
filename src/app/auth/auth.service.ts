@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import * as jwt_decode from 'jwt-decode';
+import { map } from 'rxjs/operators';
 
 export const TOKEN_NAME: string = 'jwt_token';
 
 @Injectable()
 export class AuthService {
 
-  private url: string = 'api/auth';
+  private url: string = 'http://localhost:3000/api/user';
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
@@ -25,25 +26,38 @@ export class AuthService {
 
     if (decoded.exp === undefined) return null;
 
-    const date = new Date(0); 
+    const date = new Date(0);
     date.setUTCSeconds(decoded.exp);
     return date;
   }
 
   isTokenExpired(token?: string): boolean {
-    if(!token) token = this.getToken();
-    if(!token) return true;
+    if (!token) token = this.getToken();
+    if (!token) return true;
 
     const date = this.getTokenExpirationDate(token);
-    if(date === undefined) return false;
+    if (date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());
   }
 
-  async login(user: any): Promise<string> {
-    const res = await this.http
-      .post(`${this.url}/login`, JSON.stringify(user), { headers: this.headers })
-      .toPromise();
-    return res.text();
+  login(username: string, password: string) {
+    return this.http
+      .post(`${this.url}/login`, JSON.stringify({ "username": username, "password": password }), { headers: this.headers })
+      .pipe(map(user => {
+        // login successful if there's a jwt token in the response
+        if (user.json && user.json().token) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          this.setToken(JSON.stringify(user.json().token));
+        }
+
+        return user;
+      })
+      );
   }
 
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem(TOKEN_NAME);
+    
+}
 }

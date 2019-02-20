@@ -60,6 +60,7 @@ class AptController {
         let apt = new Apt();
         apt.id = req.body.id;
         apt.city = req.body.city;
+        apt.description = req.body.description;
         apt.address = req.body.address;
         apt.floor = req.body.floor;
         apt.rooms = req.body.rooms;
@@ -86,6 +87,7 @@ class AptController {
             apt.id = req.body.id;
         }
         apt.city = req.body.city;
+        apt.description = req.body.description;
         apt.address = req.body.address;
         apt.floor = req.body.floor;
         apt.rooms = req.body.rooms;

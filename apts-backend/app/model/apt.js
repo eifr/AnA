@@ -3,9 +3,10 @@
  */
 
 class Apt {
-    constructor(id, city, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price, photos) {
+    constructor(id, city, description, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price, photos) {
         this.id = id;
         this.city = city;
+        this.description = description;
         this.address = address;
         this.floor = floor;
         this.rooms = rooms;

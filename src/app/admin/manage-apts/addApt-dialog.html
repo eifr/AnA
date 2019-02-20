@@ -17,6 +17,16 @@
 
     <div class="form-group">
       <mat-form-field>
+        <input type="text" formControlName="description" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.description.errors }" matInput placeholder="כתובת" />
+      </mat-form-field>
+      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+        <div *ngIf="f.description.errors.required">Description is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field>
         <input type="text" formControlName="address" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.address.errors }" matInput placeholder="כתובת" />
       </mat-form-field>
@@ -26,15 +36,15 @@
     </div>
 
     <div class="form-group">
-        <mat-form-field>
-          <input type="number" formControlName="rooms" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.rooms.errors }" matInput placeholder="חדרים" />
-        </mat-form-field>
-        <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">
-          <div *ngIf="f.rooms.errors.required">Rooms is required</div>
-        </div>
+      <mat-form-field>
+        <input type="number" formControlName="rooms" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.rooms.errors }" matInput placeholder="חדרים" />
+      </mat-form-field>
+      <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">
+        <div *ngIf="f.rooms.errors.required">Rooms is required</div>
       </div>
-      
+    </div>
+
     <div class="form-group">
       <mat-form-field>
         <input type="number" formControlName="floor" class="form-control"
@@ -46,22 +56,22 @@
     </div>
 
     <div class="form-group" style="display: flex; flex-direction: column; justify-content: space-evenly;">
-        <mat-checkbox formControlName="parking" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.parking.errors }">
-          חניה?
-        </mat-checkbox>
-        <div *ngIf="submitted && f.sqrMtr.errors" class="invalid-feedback">
-          <div *ngIf="f.parking.errors.required">Parking is required</div>
-        </div>
-      
-        <mat-checkbox formControlName="storage" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.storage.errors }">
-          אחסון נוסף?
-        </mat-checkbox>
-        <div *ngIf="submitted && f.storage.errors" class="invalid-feedback">
-          <div *ngIf="f.storage.errors.required">Storage is required</div>
-        </div>
+      <mat-checkbox formControlName="parking" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.parking.errors }">
+        חניה?
+      </mat-checkbox>
+      <div *ngIf="submitted && f.sqrMtr.errors" class="invalid-feedback">
+        <div *ngIf="f.parking.errors.required">Parking is required</div>
       </div>
+
+      <mat-checkbox formControlName="storage" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.storage.errors }">
+        אחסון נוסף?
+      </mat-checkbox>
+      <div *ngIf="submitted && f.storage.errors" class="invalid-feedback">
+        <div *ngIf="f.storage.errors.required">Storage is required</div>
+      </div>
+    </div>
 
     <div class="form-group">
       <mat-form-field>
@@ -74,7 +84,7 @@
       </div>
     </div>
 
-    
+
 
     <div class="form-group">
       <mat-form-field>
@@ -112,7 +122,8 @@
 
     <div class="form-group">
       <label>תמונות</label>
-      <input type="file" formControlName="aptImage" class="form-control" (change)="onFileChanged($event)" #aptImage multiple />
+      <input type="file" formControlName="aptImage" class="form-control" (change)="onFileChanged($event)" #aptImage
+        multiple />
       <div *ngIf="submitted " class="invalid-feedback">
       </div>
     </div>

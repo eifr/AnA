@@ -13,6 +13,7 @@ let init = function () {
     db.run("CREATE TABLE if not exists apt (" +
         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
         " city TEXT, " +
+        " description TEXT," +
         " address TEXT," +
         " floor INT," +
         " rooms REAL," +

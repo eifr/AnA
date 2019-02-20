@@ -55,6 +55,7 @@ export class addApt {
     private aptService: AptService) {
     this.registerForm = this.formBuilder.group({
       city: ['', Validators.required],
+      description: ['', Validators.required],
       address: ['', Validators.required],
       floor: ['', Validators.required],
       rooms: ['', Validators.required],
@@ -74,8 +75,8 @@ export class addApt {
   onFileChanged(event: any) {
     const Image = this.apt_image.nativeElement;
     this.ImageFile = [];
-    if (event.target.files.length >= 4) alert("מותר להעלות עד 3 תמונות");
-    if (Image.files && Image.files[0] && event.target.files.length <= 3) {
+    if (event.target.files.length > 5) alert("מותר להעלות עד 5 תמונות");
+    if (Image.files && Image.files[0] && event.target.files.length <= 5) {
       Array.from(event.target.files).forEach(file => {
         this.ImageFile.push(<File>file);
       });
@@ -86,6 +87,7 @@ export class addApt {
   onSubmit(): void {
     const uploadData = new FormData();
     uploadData.append('city', this.registerForm.controls['city'].value);
+    uploadData.append('description', this.registerForm.controls['description'].value);
     uploadData.append('address', this.registerForm.controls['address'].value);
     uploadData.append('floor', this.registerForm.controls['floor'].value);
     uploadData.append('rooms', this.registerForm.controls['rooms'].value);

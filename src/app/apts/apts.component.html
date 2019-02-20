@@ -1,34 +1,38 @@
 <div dir="rtl" class="apts-heading">
-    <h3>דירות חדשות</h3>
-  </div>
-<div class="slider" dir="rtl" >
+  <h3>דירות חדשות</h3>
+</div>
+<div class="slider" dir="rtl">
 
 
-  <div  *ngFor="let apt of apts" class="apt" >
+  <div *ngFor="let apt of apts" class="apt">
     <a routerLink="/detail/{{apt.id}}">
-      
+
       <img class="coverImg" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="">
 
       <div class="aptContent">
 
         <div>
-            <h2 class="title">{{apt.city}}</h2> 
-            <span> {{apt.address}} </span>
+          <h2 class="title">{{apt.city}}</h2>
+          <p>{{apt.description}}</p>
+          <span> {{apt.address}} </span>
         </div>
 
+
         <ul class="extraInfo">
-            <li> {{apt.rooms}}  חדרים</li>
+          <p>
+            <li> {{apt.rooms}} חדרים</li>
             <li> קומה {{apt.floor}} </li>
+          </p>
         </ul>
 
         <div class="links" dir="ltr">
           <a>למידע נוסף </a>
-        </div>     
+        </div>
       </div>
-      
+
 
     </a>
-    
+
   </div>
 
 </div>

@@ -18,7 +18,7 @@
     <div class="form-group">
       <mat-form-field>
         <input type="text" formControlName="description" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.description.errors }" matInput placeholder="כתובת" />
+          [ngClass]="{ 'is-invalid': submitted && f.description.errors }" matInput placeholder="תיאור נוסף" />
       </mat-form-field>
       <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
         <div *ngIf="f.description.errors.required">Description is required</div>

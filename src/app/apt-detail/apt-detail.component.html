@@ -7,6 +7,7 @@
 
       <div class="details">
         <h3>{{apt.address}}</h3>
+        <p>{{apt.description}}</p>
         <span itemprop="numberOfRooms">{{apt.rooms}} חדרים</span>
         <span itemprop="floorSize">גודל: {{apt.sqrMtr}} מ"ר</span>
         <span *ngIf="apt.parking==1" >✔️ חנייה</span>

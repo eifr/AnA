@@ -15,7 +15,9 @@ const adminRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
           { path: 'manageApts', component: ManageAptsComponent },
-          { path: '', component: AdminDashboardComponent }
+          { path: 'dashboard', component: AdminDashboardComponent },
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+
         ]
       }
     ]

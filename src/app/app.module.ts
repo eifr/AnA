@@ -10,10 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import {MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
+import { MatFormFieldModule,  MatInputModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -49,6 +49,10 @@ import { AuthGuard } from './auth/auth.guard';
 
   ],
   imports: [
+    MatMenuModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
     CommonModule,
     NgtUniversalModule,
     MatProgressSpinnerModule,
@@ -61,20 +65,20 @@ import { AuthGuard } from './auth/auth.guard';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatMenuModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
+
     ScrollingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
+  
+
   providers: [
     {
-      provide: RequestOptions, 
+      provide: RequestOptions,
       useClass: AuthRequestOptions,
-      
+
     }, AuthGuard, AuthService
   ],
 })

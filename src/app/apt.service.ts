@@ -5,25 +5,30 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Apt } from './apt';
+import { AuthService } from './auth/auth.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
+const httpOptionsAuth = new HttpHeaders();
 
 @Injectable({
   providedIn: 'root'
 })
 export class AptService {
 
-  private aptsUrl = 'https://aa-realestate.co.il/api/apt';  // URL to web api
-
+  // private aptsUrl = 'http://localhost:3000/api/apt';  // URL to web api
+  private aptsUrl: string = 'api/apt';
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private authService: AuthService
+  ) {
+
+  }
 
   /** GET apts from the server */
-  getApts (): Observable<Apt[]> {
+  getApts(): Observable<Apt[]> {
     return this.http.get<Apt[]>(this.aptsUrl)
       .pipe(
         tap(_ => this.log('fetched apts')),
@@ -31,8 +36,8 @@ export class AptService {
       );
   }
 
-   /** GET hero by id. Will 404 if id not found */
-   getApt(id: number): Observable<Apt> {
+  /** GET hero by id. Will 404 if id not found */
+  getApt(id: number): Observable<Apt> {
     const url = `${this.aptsUrl}/${id}`;
     return this.http.get<Apt>(url).pipe(
       tap(_ => this.log(`fetched apt id=${id}`)),
@@ -40,6 +45,63 @@ export class AptService {
     );
   }
 
+  //////// Save methods //////////
+
+  /** POST: add a new apt to the server */
+  addApt(data: FormData) {
+    const auth = 'Bearer ' + this.authService.getToken().split('"')[1];
+    const httpOptionsAuth = {
+      headers: new HttpHeaders({
+        'Authorization': auth
+      }),
+      reportProgress: true,
+      obsesrve: 'events'
+    };
+
+    const url = `${this.aptsUrl}/create`;
+    return this.http.post(url, data, httpOptionsAuth);
+  }
+
+  /** DELETE: delete the apt from the server */
+  deleteApt(apt: Apt | number) {
+    const auth = 'Bearer ' + this.authService.getToken().split('"')[1];
+    const httpOptionsAuth = {
+      headers: new HttpHeaders({
+        'Authorization': auth
+      }),
+      reportProgress: true,
+      obsesrve: 'events'
+    };
+    const id = typeof apt === 'number' ? apt : apt.id;
+    const url = `${this.aptsUrl}/${id}`;
+    return this.http.delete(url, httpOptionsAuth);
+  }
+
+  /** DELETE: delete multiple apts from the server 
+  deleteApts(apt: Apt[] | number[]) {
+    const auth = 'Bearer ' + this.authService.getToken().split('"')[1];
+    const httpOptionsAuth = {
+      headers: new HttpHeaders({
+        'Authorization': auth
+      }),
+      reportProgress: true,
+      obsesrve: 'events'
+    };
+     apt.forEach(apt => {
+      const id = typeof apt === 'number' ? apt : apt.id;
+      const url = `${this.aptsUrl}/${id}`;
+      this.http.delete(url, httpOptionsAuth)
+      .subscribe(res => console.log(res));
+    })
+  }*/
+
+  /** PUT: update the hero on the server 
+  updateHero (hero: Hero): Observable<any> {
+    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  } */
 
 
 
@@ -64,8 +126,7 @@ export class AptService {
 
 
 
-
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

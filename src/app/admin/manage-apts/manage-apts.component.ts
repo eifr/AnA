@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Inject, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AptService } from '../../apt.service';
+import { AptTableComponent } from '../apt-table/apt-table.component';
 
 export interface DialogData {
   animal: string;
@@ -15,6 +16,8 @@ export interface DialogData {
 export class ManageAptsComponent implements OnInit {
   animal: string;
   name: string;
+  @ViewChild(AptTableComponent) aptTable:AptTableComponent;
+
   constructor(public dialog: MatDialog) { }
 
 
@@ -35,6 +38,12 @@ export class ManageAptsComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteSelected(): void {
+
+    console.log("asd");
+    this.aptTable.deleteSelectedApt();
+  }
+
 }
 
 
@@ -47,7 +56,7 @@ export class addApt {
   submitted = false;
   ImageFile: File[];
   @ViewChild('aptImage') apt_image;
-
+  
   constructor(
     public dialogRef: MatDialogRef<addApt>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -125,4 +134,5 @@ export class addApt {
     this.dialogRef.close();
   }
 
+  
 }

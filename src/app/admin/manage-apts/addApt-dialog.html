@@ -37,7 +37,7 @@
 
     <div class="form-group">
       <mat-form-field>
-        <input type="number" formControlName="rooms" class="form-control"
+        <input type="number" formControlName="rooms" class="form-control" step=".5"
           [ngClass]="{ 'is-invalid': submitted && f.rooms.errors }" matInput placeholder="חדרים" />
       </mat-form-field>
       <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">

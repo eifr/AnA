@@ -1,16 +1,16 @@
 footer {
-    background: #F2F2F2;
-    width: 100%;
-    box-shadow: inset 0px 7px 16px -6px;
-    height: 15vh;
-    display: grid;
-    grid-template-columns: 30% auto 25%;
-    grid-template-rows: 1fr 1fr;
     overflow: hidden;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    /* border-top: 1px solid #ffffffb0; */
+    /* padding: 4px 50px; */
+    /* box-shadow: 0px 0px 15px #333; */
+    /* background: #1e252f; */
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: space-between;
 }
 
 .item-a {
@@ -21,8 +21,8 @@ footer {
         height: 100%;
         div {
             display: flex;
-            justify-content: space-evenly;
-            align-items: center;
+            justify-content: flex-end;
+            align-items: flex-end;
         }
         .fab {
             font-size: 6vw;
@@ -40,26 +40,26 @@ footer {
         /* Set a specific color for each brand */
         /* Facebook */
         .fa-facebook-f {
-            background: #3B5998;
+            //   background: #3B5998;
             color: white;
         }
         /* Twitter */
         .fa-twitter {
-            background: #55ACEE;
+            //   background: #55ACEE;
             color: white;
         }
         /* Instagram */
         .fa-instagram {
-            background: #f09433;
+            /*   background: #f09433;
             background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1); */
             color: white;
         }
         /* Facebook Messenger */
         .fa-facebook-messenger {
-            background: #0084FF;
+            //   background: #0084FF;
             color: white;
         }
     }
@@ -74,7 +74,7 @@ footer {
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
     h3 {
         margin: 0;
     }
@@ -83,20 +83,23 @@ a {
 .item-c {
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-start;
     a {
-        color: #000000;
+        color: #ffffff;
         text-decoration: none;
         font-size: larger;
         display: flex;
-        padding: 5px;
-        border-radius: 11px;
-        background: white;
-        box-shadow: 0px 0px 3px 1px #33333359;
-        width: 70%;
+        padding: 9px;
+        /* border-radius: 11px; */
+        /* background: white; */
+        /* box-shadow: 0px 0px 3px 1px #33333359; */
+        /* width: 70%; */
         justify-content: center;
         align-items: center;
+    }
+    .bigScreen {
+        display: none;
     }
 }
 
@@ -139,6 +142,14 @@ a {
                 width: 4.5vw;
                 height: 4.5vw;
             }
+        }
+    }
+    .enter-br {
+        display: none;
+    }
+    .item-c {
+        .bigScreen {
+            display: inline;
         }
     }
 }

@@ -66,7 +66,7 @@ export class AptTableComponent implements OnInit {
 
       this.aptService.deleteApt(apt)
         .subscribe(() => {
-        //  this.masterToggle();
+          this.getApts();
         });
     });
 

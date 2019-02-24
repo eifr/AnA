@@ -36,7 +36,7 @@ class AptDao {
      * @return all entities
      */
     findAll() {
-        let sqlRequest = "SELECT * FROM apt";
+        let sqlRequest = "SELECT * FROM apt ORDER BY id DESC";
         return this.common.findAll(sqlRequest).then(rows => {
             let apts = [];
             
@@ -101,7 +101,7 @@ class AptDao {
      */
     create(Apt) {
         let sqlRequest = "INSERT into apt (city, description, address, floor, rooms, sqrMtr, parking, storage, arnona, vaad, price) " +
-            "VALUES ($city, $description, $address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price)";
+            "VALUES ($city, $description, $address, $floor, $rooms, $sqrMtr, $parking, $storage, $arnona, $vaad, $price) ";
         let sqlParams = {
             $city: Apt.city,
             $description: Apt.description,

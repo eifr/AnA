@@ -4,7 +4,7 @@
 <div class="slider" dir="rtl">
 
 
-  <div *ngFor="let apt of apts | orderBy:'-id'" class="apt">
+  <div *ngFor="let apt of apts" class="apt">
     <a routerLink="/detail/{{apt.id}}">
 
       <img class="coverImg" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="">
@@ -13,7 +13,7 @@
 
         <div>
           <h2 class="title">{{apt.city}}</h2>
-          <p>{{apt.description}}</p>
+          <p class= "subTitle">{{apt.description}}</p>
         </div>
 
 

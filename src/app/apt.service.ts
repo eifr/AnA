@@ -29,25 +29,6 @@ export class AptService {
     private authService: AuthService
   ) { }
 
-  /* Manage state of app (homepage/detailsPage) */
-
-  public updateStringSubject(newStringVar: string) {
-    this.appState.next(newStringVar);
-  }
-
-  getAppState() {
-    return this.appState$;
-  }
-
-  stateDetail(): void {
-    this.updateStringSubject('detail');
-  }
-
-  stateHomepage() {
-    this.updateStringSubject('homeplage');
-  }
-
-
 
   /** GET apts from the server */
   getApts(): Observable<Apt[]> {
@@ -126,28 +107,6 @@ export class AptService {
   } */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -164,5 +123,23 @@ export class AptService {
 
   private log(message: string) {
     console.log(message);
+  }
+
+   /* Manage state of app (homepage/detailsPage) */
+
+   public updateStringSubject(newStringVar: string) {
+    this.appState.next(newStringVar);
+  }
+
+  getAppState() {
+    return this.appState$;
+  }
+
+  stateDetail(): void {
+    this.updateStringSubject('detail');
+  }
+
+  stateHomepage() {
+    this.updateStringSubject('homeplage');
   }
 }

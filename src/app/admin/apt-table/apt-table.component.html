@@ -1,46 +1,46 @@
 <div class="container mat-elevation-z8">
-  <table mat-table [dataSource]="apts" >
+  <mat-table [dataSource]="apts" dir="rtl">
 
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
+      <mat-header-cell *matHeaderCellDef>
         <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
           [indeterminate]="selection.hasValue() && !isAllSelected()">
         </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row">
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
         <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
           [checked]="selection.isSelected(row)">
-        </mat-checkbox>
-      </td>
+        </mat-checkbox> 
+      </mat-cell>
     </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> id </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="city">
-      <th mat-header-cell *matHeaderCellDef> city </th>
-      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      <mat-header-cell *matHeaderCellDef> עיר </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef> address </th>
-      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      <mat-header-cell *matHeaderCellDef> כתובת </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="rooms">
-      <th mat-header-cell *matHeaderCellDef> rooms </th>
-      <td mat-cell *matCellDef="let element"> {{element.rooms}} </td>
+      <mat-header-cell *matHeaderCellDef> חדרים </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.rooms}} </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
-    </tr>
-  </table>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+    </mat-row>
+  </mat-table>
 </div>

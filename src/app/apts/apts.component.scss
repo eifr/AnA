@@ -14,6 +14,10 @@ $aptsCardsMargin: 5px;
     }
 }
 
+.subTitle {
+    margin: 0;
+}
+
 .slider {
     /* line them up horizontally */
     display: flex;
@@ -97,9 +101,6 @@ $aptsCardsMargin: 5px;
     }
     .apts-heading {
         font-size: 2vw;
-    }
-    .subTitle {
-        margin:0;
     }
 }
 

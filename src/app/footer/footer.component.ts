@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AptService } from '../apt.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  bgState = 'homepage';
 
-  constructor() { }
+  constructor(private aptService: AptService) { }
 
   ngOnInit() {
+    this.aptService.getAppState().subscribe (state => {
+      this.bgState = state;
+    });
   }
 
+  
 }

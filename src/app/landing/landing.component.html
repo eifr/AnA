@@ -1,20 +1,22 @@
 <div class="container {{bgState}}">
 
-  <div class="bgImage " >
-    <img src="{{url[0]}}" alt="" >
-    
+  <div class="bgImage ">
+    <img src="{{url[0]}}" alt="">
+
 
 
   </div>
-  
+
   <div class="navbar">
     <app-navbar></app-navbar>
   </div>
 
-  <div class="route" [@routeAnimations]="prepareRoute(outlet)">
-    <router-outlet id="mainRouter" #outlet="outlet"></router-outlet>
+  <div>
+    <div class="route" [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet id="mainRouter" #outlet="outlet"></router-outlet>
+    </div>
   </div>
-
+  
   <app-footer></app-footer>
 
 </div>

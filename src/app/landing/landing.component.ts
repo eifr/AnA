@@ -5,6 +5,8 @@ import {
   transition, animate, style, query
 } from '@angular/animations';
 import { slideInAnimation } from '../animations';
+import { FooterComponent } from '../footer/footer.component';
+import { AptService } from '../apt.service';
 
 @Component({
   selector: 'app-landing',
@@ -18,31 +20,36 @@ import { slideInAnimation } from '../animations';
 export class LandingComponent implements OnInit {
   url = [];
   bgState = 'homepage';
-  
+  footer:FooterComponent;
+
   private imgUrl = 'https://aa-realestate.co.il/aptImages/';
   private homepage = './assets/img/landing-bg.jpg';
   
-  constructor() {
-   }
+  constructor(
+    private aptService: AptService
+  ) {}
 
 
   ngOnInit() {
     this.url[0] = this.homepage;
+    this.aptService.getAppState().subscribe (state => {
+      this.bgState = state;
+    });
   }
 
   
   setImageUrl(photos, id) {
     for (let index = 0; index < photos.length; index++) {
       this.url[index] = this.imgUrl + id + '/' + photos[index];
-     // console.log(this.url);
     }
-    this.bgState = 'detail';
+    
+    this.aptService.stateDetail();
     return this.url[0];
   }
 
   setHomepage(): void {
     this.url[0] = this.homepage;
-    this.bgState = 'homepage';
+    this.aptService.stateHomepage();
   }
 
   prepareRoute(outlet: RouterOutlet) {

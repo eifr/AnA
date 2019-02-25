@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, observable, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Apt } from './apt';
@@ -20,12 +20,34 @@ export class AptService {
   private aptsUrl: string = 'api/apt';
 //  private aptsUrl = 'http://localhost:3000/api/apt';
 
+
+  private appState = new Subject<string>();
+  private appState$ = this.appState.asObservable();
+
   constructor(
     private http: HttpClient,
     private authService: AuthService
-  ) {
+  ) { }
 
+  /* Manage state of app (homepage/detailsPage) */
+
+  public updateStringSubject(newStringVar: string) {
+    this.appState.next(newStringVar);
   }
+
+  getAppState() {
+    return this.appState$;
+  }
+
+  stateDetail(): void {
+    this.updateStringSubject('detail');
+  }
+
+  stateHomepage() {
+    this.updateStringSubject('homeplage');
+  }
+
+
 
   /** GET apts from the server */
   getApts(): Observable<Apt[]> {

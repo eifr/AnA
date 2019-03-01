@@ -11,17 +11,17 @@ let multer = require('multer');
 let fs = require('fs-extra');
 
 /* Load webp converter */
-var webp=require('webp-converter');
+var webp = require('webp-converter');
 
 var storage = multer.diskStorage({
-    destination:'./aptImages/',
-     //(req, file, cb) => {
-     //   const dir = 
-    
-        //fs.mkdir(dir, err => cb(err, dir))
+    destination: './aptImages/',
+    //(req, file, cb) => {
+    //   const dir = 
+
+    //fs.mkdir(dir, err => cb(err, dir))
     //  },
-    filename: function(req, file, callback) {
-        callback(null, file.fieldname )
+    filename: function (req, file, callback) {
+        callback(null, file.fieldname)
     }
 });
 var upload = multer({ storage });
@@ -46,7 +46,13 @@ router.get('/:id', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    aptController.findAll(res);
+    if (Object.keys(req.query).length === 0) {
+        aptController.findAll(res);
+
+    } else {
+        aptController.findQuery(req, res);
+
+    }
 
 });
 
@@ -56,46 +62,45 @@ router.put('/:id', function (req, res) {
 
 router.post('/create', checkAuth, upload.any(), function (req, res) {
     aptController.create(req, res)
-    .then(()=>{
-       // console.log(res.locals.id)
-        //console.log(req.files)
-        
-        if(req.files) {
+        .then(() => {
+            
 
-            let i=1; //Naming files
+            if (req.files) {
 
-            //Directory config
-            const dir = './aptImages/' + res.locals.id + '/';
-            fs.mkdirSync(dir);
+                let i = 1; //Naming files
 
-            req.files.forEach((file) => {             
-                
-                //Naming and saving file
-                let filename = dir + i + '-' +  file.originalname;
-                
-                fs.rename(file.path, filename, function(err) {
-                    if(err)throw err;
+                //Directory config
+                const dir = './aptImages/' + res.locals.id + '/';
+                fs.mkdirSync(dir);
+
+                req.files.forEach((file) => {
+
+                    //Naming and saving file
+                    let filename = dir + i + '-' + file.originalname;
+
+                    fs.rename(file.path, filename, function (err) {
+                        if (err) throw err;
+                    })
+
+                    /*   webp.cwebp(filename, dir+i+".webp" ,"-q 80",function(status,error) {
+                           //if conversion successful status will be '100'
+                           if(status==='100'){
+                               fs.unlink(filename, (err) => {
+                                   if (err) throw err;
+                               // console.log(filename+' was deleted');
+                               });
+                           }
+                           //if conversion fails status will be '101'
+                              // console.log(status,error);	
+                       }); */
+                    i++;
                 })
+            }
 
-             /*   webp.cwebp(filename, dir+i+".webp" ,"-q 80",function(status,error) {
-                    //if conversion successful status will be '100'
-                    if(status==='100'){
-                        fs.unlink(filename, (err) => {
-                            if (err) throw err;
-                        // console.log(filename+' was deleted');
-                        });
-                    }
-            	    //if conversion fails status will be '101'
-              	   // console.log(status,error);	
-                }); */
-                i++;
-            })
-        }
-        
-    });
+        });
 });
 
-router.delete('/:id', checkAuth,function (req, res) {
+router.delete('/:id', checkAuth, function (req, res) {
     aptController.deleteById(req, res);
 });
 

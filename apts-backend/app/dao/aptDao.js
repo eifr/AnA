@@ -24,12 +24,12 @@ class AptDao {
      */
     findById(id) {
         let sqlRequest = "SELECT * FROM apt WHERE id=$id";
-        let sqlParams = {$id: id};
-        var photos = fs.readdirSync('./aptImages/'+id+'/');
+        let sqlParams = { $id: id };
+        var photos = fs.readdirSync('./aptImages/' + id + '/');
         return this.common.findOne(sqlRequest, sqlParams).then(row =>
             new Apt(row.id, row.city, row.description, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
     };
-    
+
 
     /**
      * Finds all entities.
@@ -39,9 +39,33 @@ class AptDao {
         let sqlRequest = "SELECT * FROM apt ORDER BY id DESC";
         return this.common.findAll(sqlRequest).then(rows => {
             let apts = [];
-            
+
             for (const row of rows) {
-                var photos = fs.readdirSync('./aptImages/'+row.id+'/');
+                var photos = fs.readdirSync('./aptImages/' + row.id + '/');
+                apts.push(new Apt(row.id, row.city, row.description, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
+            }
+            return apts;
+        });
+    };
+
+    /**
+     * Finds Query entities.
+     * @return queried entities
+     */
+    findQuery(sqlParams) {
+        //  const sql = `WHERE city = ${formArray[0].location} AND rooms = ${formArray[1].rooms} AND sqrMtr = ${formArray[1].sqrMtr} AND price = ${formArray[2].price} AND parking = ${formArray[2].parking ? 1 : 0} AND storage = ${formArray[2].storage ? 1 : 0}`;
+        let sqlRequest = "SELECT * FROM apt WHERE " +
+            "city=$city AND " +
+            "rooms=$rooms AND " +
+            "sqrMtr=$sqrMtr AND " +
+            "parking=$parking AND " +
+            "storage=$storage AND " +
+            "(price BETWEEN $pricelow AND $pricehigh) " +
+            "ORDER BY id DESC";
+        return this.common.findQuery(sqlRequest, sqlParams).then(rows => {
+            let apts = [];
+            for (const row of rows) {
+                var photos = fs.readdirSync('./aptImages/' + row.id + '/');
                 apts.push(new Apt(row.id, row.city, row.description, row.address, row.floor, row.rooms, row.sqrMtr, row.parking, row.storage, row.arnona, row.vaad, row.price, photos));
             }
             return apts;
@@ -64,8 +88,8 @@ class AptDao {
      */
     update(Apt) {
         let sqlRequest = "UPDATE apt SET " +
-            "city=$city, " +  
-            "description=$description, " + 
+            "city=$city, " +
+            "description=$description, " +
             "address=$address, " +
             "floor=$floor, " +
             "rooms=$rooms, " +
@@ -150,7 +174,7 @@ class AptDao {
      */
     deleteById(id) {
         let sqlRequest = "DELETE FROM apt WHERE id=$id";
-        let sqlParams = {$id: id};
+        let sqlParams = { $id: id };
         return this.common.run(sqlRequest, sqlParams);
     };
 
@@ -161,7 +185,7 @@ class AptDao {
      */
     exists(id) {
         let sqlRequest = "SELECT (count(*) > 0) as found FROM apt WHERE id=$id";
-        let sqlParams = {$id: id};
+        let sqlParams = { $id: id };
         return this.common.run(sqlRequest, sqlParams);
     };
 }

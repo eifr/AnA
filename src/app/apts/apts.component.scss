@@ -4,13 +4,38 @@ $cardsPaddingX: 10px;
 $aptsCardsMargin: 5px;
 /* Mobile Design */
 
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+}
+
 .apts-heading {
     color: white;
     font-size: 11vw;
-    margin: 0 calc(5px*5);
+    margin: 0 $aptsCardsMargin;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
     h3 {
         margin: 0;
         text-shadow: 0px 2px 15px #333333d1;
+    }
+    a:hover {
+        cursor: pointer;
+    }
+
+    .searchIcon {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+            display: none;
+        }
     }
 }
 
@@ -88,6 +113,13 @@ $aptsCardsMargin: 5px;
             padding: 0 calc(#{$cardsPaddingX}*4);
         }
     }
+    .apts-heading {
+        margin: 0 calc(#{$aptsCardsMargin}*4);
+
+        .searchIcon span {
+            display: inherit;
+        }
+    }
 }
 
 /* Desktop Design */
@@ -101,6 +133,8 @@ $aptsCardsMargin: 5px;
     }
     .apts-heading {
         font-size: 2vw;
+        margin: 0 calc(#{$aptsCardsMargin}*5);
+
     }
 }
 

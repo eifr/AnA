@@ -5,13 +5,12 @@ import { NgModule } from '@angular/core';
 import { AuthRequestOptions } from './auth/auth-request';
 import { AuthService } from './auth/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule,  MatInputModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
-
+import { MatSnackBarModule, GestureConfig, MatSliderModule, MatSelectModule, MatStepperModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +22,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { AptsComponent } from './apts/apts.component';
+import { AptsComponent, searchApt } from './apts/apts.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AptDetailComponent } from './apt-detail/apt-detail.component';
 
@@ -34,6 +33,7 @@ import { HttpModule } from '@angular/http';
 import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
+  entryComponents: [AptsComponent, searchApt],
   declarations: [
     AppComponent,
     LandingComponent,
@@ -46,11 +46,17 @@ import { AuthGuard } from './auth/auth.guard';
     AptsComponent,
     AptDetailComponent,
     LoginComponent,
+    searchApt
 
   ],
   imports: [
     MatMenuModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatSelectModule,
     MatIconModule,
+    MatStepperModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
@@ -65,21 +71,21 @@ import { AuthGuard } from './auth/auth.guard';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-
+    AngularEditorModule,
     ScrollingModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     RouterModule
   ],
-  
+
 
   providers: [
     {
       provide: RequestOptions,
-      useClass: AuthRequestOptions,
+      useClass: AuthRequestOptions
+    }, AuthGuard, AuthService, { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
 
-    }, AuthGuard, AuthService
   ],
 })
 export class AppModule { }

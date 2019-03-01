@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Apt } from './apt';
 import { AuthService } from './auth/auth.service';
+import { FormArray } from '@angular/forms';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -17,7 +18,7 @@ const httpOptionsAuth = new HttpHeaders();
 })
 export class AptService {
 
-  private aptsUrl: string = 'api/apt';
+    private aptsUrl: string = 'api/apt';
 //  private aptsUrl = 'http://localhost:3000/api/apt';
 
 
@@ -33,6 +34,26 @@ export class AptService {
   /** GET apts from the server */
   getApts(): Observable<Apt[]> {
     return this.http.get<Apt[]>(this.aptsUrl)
+      .pipe(
+        tap(_ => this.log('fetched apts')),
+        catchError(this.handleError('getApts', []))
+      );
+  }
+
+  /** GET apts from the server */
+  searchApts(formArray: FormArray): Observable<Apt[]> {
+  //  const sql = `WHERE city = ${formArray[0].location} AND rooms = ${formArray[1].rooms} AND sqrMtr = ${formArray[1].sqrMtr} AND price = ${formArray[2].price} AND parking = ${formArray[2].parking ? 1 : 0} AND storage = ${formArray[2].storage ? 1 : 0}`;
+    const params = {
+      params: {
+        city: formArray[0].location,
+        rooms: formArray[1].rooms,
+        sqrMtr: formArray[1].sqrMtr,
+        price: formArray[2].price,
+        storage: (formArray[2].storage  ? 1 : 0).toString(),
+        parking: (formArray[2].parking  ? 1 : 0).toString()
+      }};
+  //  console.log(sql);
+    return this.http.get<Apt[]>(this.aptsUrl, params)
       .pipe(
         tap(_ => this.log('fetched apts')),
         catchError(this.handleError('getApts', []))
@@ -125,9 +146,9 @@ export class AptService {
     console.log(message);
   }
 
-   /* Manage state of app (homepage/detailsPage) */
+  /* Manage state of app (homepage/detailsPage) */
 
-   public updateStringSubject(newStringVar: string) {
+  public updateStringSubject(newStringVar: string) {
     this.appState.next(newStringVar);
   }
 
@@ -140,6 +161,6 @@ export class AptService {
   }
 
   stateHomepage() {
-    this.updateStringSubject('homeplage');
+    this.updateStringSubject('homepage');
   }
 }

@@ -1,36 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import url('https://fonts.googleapis.com/css?family=Assistant');
-
-
-$font: 'Assistant', sans-serif;
-
+$font: 'Assistant',
+sans-serif;
 html {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 body {
-  margin: 0;
-  background: #2c3d4f;
+    margin: 0;
+    background: #2c3d4f;
 }
+
 body * {
-  font-family: $font;
+    font-family: $font;
 }
-
-
 
 // Style for global apts list 
 .cdk-virtual-scroll-content-wrapper {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
-#mainRouter ~ * {
- // position: absolute;
-//  height: 100%;
-  width: 100%;
+#mainRouter~* {
+    //  position: absolute;
+    //  height: 100%;
+    width: 100%;
 }
 
 .mat-form-field {
-  width: 100%;}
+    width: 100%;
+}
 
+.mat-slider {
+    width: 100%;
+}

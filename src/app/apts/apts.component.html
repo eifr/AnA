@@ -1,5 +1,15 @@
-<div dir="rtl" class="apts-heading">
+<div *ngIf="state=='homepage'" dir="rtl" class="apts-heading">
   <h3>דירות חדשות</h3>
+  <a (click)="openDialog()" class="searchIcon">
+    <mat-icon inline="true" >search</mat-icon> <span> חפש דירה </span>
+  </a>
+</div>
+
+<div *ngIf="state=='search'" dir="rtl" class="apts-heading">
+  <h3>תוצאות חיפוש</h3>
+  <a (click)="toHomepage()" class="searchIcon">
+    <mat-icon inline="true">arrow_back</mat-icon>
+  </a>
 </div>
 <div class="slider" dir="rtl">
 
@@ -13,7 +23,7 @@
 
         <div>
           <h2 class="title">{{apt.city}}</h2>
-          <p class= "subTitle">{{apt.description}}</p>
+          <p class="subTitle">{{apt.description}}</p>
         </div>
 
 

@@ -32,8 +32,8 @@ export class NavbarComponent implements OnInit {
   }
   setHomePage(): void {
     let mainNav = document.getElementById('js-menu');
-
     mainNav.classList.toggle('active');
+    
     this.landingPage.setHomepage();
     this.title.setTitle('A&A RealEstate');
   }

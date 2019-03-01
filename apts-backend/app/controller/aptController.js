@@ -41,6 +41,26 @@ class AptController {
     };
 
     /**
+     * Finds query entities.
+     * @return queried entities
+     */
+    findQuery(req, res) {
+        const range = 1000;
+        let sqlParams = {
+            $city: req.query.city,
+            $rooms: parseFloat(req.query.rooms),
+            $sqrMtr: parseFloat(req.query.sqrMtr),
+            $parking: req.query.parking,
+            $storage: req.query.storage,
+            $pricelow: req.query.price-(range/2),
+            $pricehigh: parseInt(req.query.price)+(range/2)
+        };
+        this.AptDao.findQuery(sqlParams)
+            .then(this.common.findSuccess(res))
+            .catch(this.common.findError(res));
+    };
+
+    /**
      * Counts all the records present in the database
      * @return count
      */

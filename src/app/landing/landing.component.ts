@@ -36,7 +36,6 @@ export class LandingComponent implements OnInit {
       this.bgState = state;
     });
   }
-
   
   setImageUrl(photos, id) {
     for (let index = 0; index < photos.length; index++) {

@@ -1,0 +1,69 @@
+<h1 mat-dialog-title dir="rtl">חפש דירה</h1>
+<div mat-dialog-content dir="rtl">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-vertical-stepper formArrayName="formArray" linear #stepper>
+      <mat-step formGroupName="0" [stepControl]="formGroup.controls.formArray.get([0])">
+        <ng-template matStepLabel>📍 איפה תרצה לגור?</ng-template>
+        <mat-form-field>
+          <mat-select placeholder="בחר עיר" formControlName="location" required>
+            <mat-option *ngFor="let city of cities" [value]="city.value">
+              {{city.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>אנא בחר עיר</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext type="button">המשך</button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName="1" [stepControl]="formGroup.controls.formArray.get([1])" required>
+        <ng-template matStepLabel>🛏️ קצת פרטים טכניים</ng-template>
+
+        <h4>חדרים: <span *ngIf="rooms.value">{{rooms.value}}</span></h4>
+        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="0.5" step="0.5" min="1" max="10"
+          formControlName="rooms" #rooms required>
+          חדרים:</mat-slider>
+
+        <h4>גודל במ"ר: <span *ngIf="sqrMtr.value">{{sqrMtr.value}} מ"ר</span></h4>
+        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="auto" step="20" min="20" max="300"
+          formControlName="sqrMtr" #sqrMtr required>
+        </mat-slider>
+
+        <div>
+          <button mat-button matStepperPrevious type="button">חזור</button>
+          <button mat-button matStepperNext type="button">המשך</button>
+        </div>
+      </mat-step>
+
+      <mat-step formGroupName="2" [stepControl]="formGroup.controls.formArray.get([2])">
+        <ng-template matStepLabel>🙏 העדפות אישיות</ng-template>
+        <section style="display:flex; flex-flow:column;">
+          <mat-checkbox formControlName="parking">חניה</mat-checkbox>
+          <mat-checkbox formControlName="storage">אחסון</mat-checkbox>
+        </section>
+
+        <h4>מחיר: <span *ngIf="price.value">{{formatLabel(price.value+500)}} - {{formatLabel(price.value-500)}}</span>
+        </h4>
+        <mat-slider [displayWith]="formatLabel" tickInterval="auto" step="500" min="2000" max="20000" value="2000"
+          formControlName="price" #price>
+        </mat-slider>
+        <div>
+          <button mat-button matStepperPrevious type="button">חזור</button>
+          <button mat-button matStepperNext type="button">המשך</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>חיפוש</ng-template>
+        בעמוד זה יהיה ניתן להרשם לעדכונים
+        <div>
+          <button mat-button (click)="stepper.reset()">ביטול</button>
+          <button mat-button type="submit">חפש</button>
+
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </form>
+
+</div>

@@ -7,7 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ManageAptsComponent, addApt } from './manage-apts/manage-apts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AptTableComponent } from './apt-table/apt-table.component';
-
+  
 @NgModule({
   entryComponents: [ManageAptsComponent, addApt],
   declarations: [AdminDashboardComponent, AdminComponent, ManageAptsComponent, addApt, AptTableComponent],

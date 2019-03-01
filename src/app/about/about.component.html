@@ -1,3 +1,8 @@
-<p>
-  about works!
+<p  [innerHTML]="content" style = "color:white;" dir="rtl">
 </p>
+
+<div *ngIf="isLogged" style = "color:white; background: #333">
+
+  <angular-editor [(ngModel)]="content" [config]="config" dir="rtl" ></angular-editor>
+
+</div> 

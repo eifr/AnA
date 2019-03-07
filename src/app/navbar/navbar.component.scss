@@ -39,12 +39,8 @@
         animation: colorChange 15s linear infinite;
         animation-delay: 5s
     }
-    h1 {
-        font-size: 3em;
-        margin: 0;
-        padding-left: .1em;
-    }
-    h2 {
+    
+    h1, h2 {
         margin: 0;
         font-size: 2em;
         display: none;

@@ -10,11 +10,11 @@ import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: HomepageComponent, data: { animation: 'HomePage' } },
+  { path: '', component: HomepageComponent, data: { animation: 'HomePage' } },
   { path: 'about', component: AboutComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'detail/:id', component: AptDetailComponent, data: { animation: 'AboutPage' } },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

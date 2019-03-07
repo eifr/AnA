@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
@@ -16,9 +16,19 @@ export class AptsComponent implements OnInit {
   animal: string;
   name: string;
   state: string;
+  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
 
   constructor(private aptService: AptService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.state = 'homepage';
+    this.aptService.createLinkForCanonicalURL('');
+
+  }
+
+  public scrollLeft(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 300), behavior: 'smooth' });
+  }
+  public scrollRight(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 300), behavior: 'smooth' });
   }
 
   openDialog(): void {

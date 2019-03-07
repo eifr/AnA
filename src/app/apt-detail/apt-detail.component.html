@@ -10,11 +10,10 @@
         <p>{{apt.description}}</p>
         <span itemprop="numberOfRooms">{{apt.rooms}} חדרים</span>
         <span itemprop="floorSize">גודל: {{apt.sqrMtr}} מ"ר</span>
-        <span *ngIf="apt.parking==1" >✔️ חנייה</span>
-        <span *ngIf="apt.storage==1" >✔️ אחסון</span>
+        <span *ngIf="apt.parking==1">✔️ חנייה</span>
+        <span *ngIf="apt.storage==1">✔️ אחסון</span>
 
       </div>
-      <a href="https://wa.me/972546460629/?text=שלום, אני מתעניין בדירה {{apt.id}}" class="fab fa-whatsapp">למתעניינים</a>
 
     </div>
 
@@ -24,7 +23,15 @@
   </div>
 
   <div class="secContent ">
+    <a mat-raised-button href="https://wa.me/972546460629/?text=שלום, אני מתעניין בדירה {{apt.id}}" class="textUs">
+      <div class="waConteiner">
+        
+        <h2><span class="fab fa-whatsapp"></span> למתעניינים </h2>
+      </div>
+
+    </a>
     <h2 *ngIf="apt.price">{{apt.price}}₪</h2>
+
   </div>
 
 </div>

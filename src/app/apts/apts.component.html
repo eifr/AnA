@@ -1,7 +1,7 @@
 <div *ngIf="state=='homepage'" dir="rtl" class="apts-heading">
   <h3>דירות חדשות</h3>
   <a (click)="openDialog()" class="searchIcon">
-    <mat-icon inline="true" >search</mat-icon> <span> חפש דירה </span>
+    <mat-icon inline="true">search</mat-icon> <span> חפש דירה </span>
   </a>
 </div>
 
@@ -11,11 +11,24 @@
     <mat-icon inline="true">arrow_back</mat-icon>
   </a>
 </div>
-<div class="slider" dir="rtl">
+<div class="slider" dir="rtl" #widgetsContent>
 
+  <div class="navArrows">
+    <button mat-mini-fab (click)="scrollRight()">
+      <mat-icon >
+          navigate_next
+      </mat-icon>
+    </button>
+    <button mat-mini-fab (click)="scrollLeft()">
+      <mat-icon>
+        navigate_before
+      </mat-icon>
+    </button>
+  </div>
 
   <div *ngFor="let apt of apts" class="apt">
-    <a routerLink="/detail/{{apt.id}}">
+
+    <a routerLink href routerLink="/detail/{{apt.id}}">
 
       <img class="coverImg" src="https://aa-realestate.co.il/aptImages/{{apt.id}}/{{apt.photos[0]}}" alt="">
 

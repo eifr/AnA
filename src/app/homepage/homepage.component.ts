@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Apt } from '../apt';
+
 
 @Component({
   selector: 'app-homepage',
@@ -10,6 +10,7 @@ export class HomepageComponent implements OnInit {
 
  
   constructor() {
+    
   }
 
 

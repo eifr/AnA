@@ -24,7 +24,7 @@ export class AptDetailComponent implements OnInit {
     private meta: Meta, 
     private title: Title
   ) {
-
+    this.aptService.createLinkForCanonicalURL();
    }
 
   ngOnInit() {

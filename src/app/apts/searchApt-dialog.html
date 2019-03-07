@@ -43,7 +43,7 @@
           <mat-checkbox formControlName="storage">אחסון</mat-checkbox>
         </section>
 
-        <h4>מחיר: <span *ngIf="price.value">{{formatLabel(price.value+500)}} - {{formatLabel(price.value-500)}}</span>
+        <h4>מחיר: <span *ngIf="price.value" style="font-variant-numeric: tabular-nums">{{formatLabel(price.value+500)}} - {{formatLabel(price.value-500)}}</span>
         </h4>
         <mat-slider [displayWith]="formatLabel" tickInterval="auto" step="500" min="2000" max="20000" value="2000"
           formControlName="price" #price>

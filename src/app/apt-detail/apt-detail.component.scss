@@ -11,7 +11,15 @@
     background: #eeeeee;
 }
 
-
+.textUs {
+    background-color: #25d366;
+    color: white;
+    line-height: inherit;
+    
+    .fa-whatsapp {
+        margin-left: 5%;
+    }
+}
 
 .topSection {
     display: flex;
@@ -46,9 +54,9 @@
 
 .secContent {
     width: 100%;
-    h2 {
-        float: left;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Tablet Design */
@@ -78,4 +86,8 @@
 
 /* Desktop Design */
 
-@media only screen and (min-width: 1025px) {}
+@media only screen and (min-width: 1025px) {
+    .textUs {
+        display: none;
+    }
+}

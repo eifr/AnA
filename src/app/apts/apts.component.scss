@@ -10,7 +10,25 @@ $aptsCardsMargin: 5px;
     align-items: center;
     height: 60px;
 }
+.navArrows {
+    display: none;
+    position: absolute;
+    width: 97%;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+.navArrows button{
+    background: #333;
+    color:white;
 
+    mat-icon {
+        vertical-align: baseline;
+    }
+}
 .apts-heading {
     color: white;
     font-size: 11vw;
@@ -55,6 +73,10 @@ $aptsCardsMargin: 5px;
     scroll-snap-type: x mandatory;
     flex-flow: row nowrap;
     margin-top: 5px;
+    
+}
+.slider::-webkit-scrollbar {
+    width: 0 !important;
 }
 
 .apt {
@@ -70,6 +92,7 @@ $aptsCardsMargin: 5px;
     border-radius: 30px;
     background: #eeeeee;
     margin: 0 $aptsCardsMargin;
+    
     a {
         text-decoration: none;
         color: black;
@@ -125,6 +148,9 @@ $aptsCardsMargin: 5px;
 /* Desktop Design */
 
 @media only screen and (min-width: 1025px) {
+    .navArrows {
+        display: flex;
+    }
     .apt {
         height: 25vw;
         margin: 0 calc(#{$aptsCardsMargin}*5);
